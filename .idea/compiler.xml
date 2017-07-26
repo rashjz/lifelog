@@ -6,11 +6,13 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="lifelog" />
         <module name="sbcrud" />
         <module name="SpringBootCRUDApplicationExample" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="lifelog" target="1.8" />
       <module name="sbcrud" target="1.8" />
       <module name="SpringBootCRUDApplicationExample" target="1.8" />
     </bytecodeTargetLevel>
