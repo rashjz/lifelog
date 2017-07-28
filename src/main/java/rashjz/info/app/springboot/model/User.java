@@ -11,7 +11,7 @@ import java.io.Serializable;
 public class User implements Serializable{
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@GeneratedValue
 	private Long id;
 
 	@NotEmpty
@@ -53,6 +53,12 @@ public class User implements Serializable{
 	}
 
 	public void setSalary(double salary) {
+		this.salary = salary;
+	}
+
+	public User(String name, Integer age, double salary) {
+		this.name = name;
+		this.age = age;
 		this.salary = salary;
 	}
 
