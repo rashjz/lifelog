@@ -1,10 +1,7 @@
 /*
 var app = angular.module('crudApp',['ui.router','ngStorage']);
 
-app.constant('urls', {
-    BASE: 'http://localhost:8080/SpringBootCRUDApp',
-    USER_SERVICE_API : 'http://localhost:8080/SpringBootCRUDApp/api/user/'
-});
+
 
 app.config(['$stateProvider', '$urlRouterProvider',
     function($stateProvider, $urlRouterProvider) {
@@ -28,22 +25,26 @@ app.config(['$stateProvider', '$urlRouterProvider',
     }]);
 
 */
+var app = angular.module('taskManagerApp', ['ngAnimate']);
+app.constant('urls', {
+    BASE: 'http://localhost:8080/SpringBootCRUDApp',
+    USER_SERVICE_API: 'http://localhost:8080/SpringBootCRUDApp/api/user/',
+    TASK_SERVICE_API: 'http://localhost:8080/tasks/'
+});
 
 
+app.controller('taskManagerController', function ($scope, $http) {
 
-var taskManagerModule = angular.module('taskManagerApp', ['ngAnimate']);
-taskManagerModule.controller('taskManagerController', function ($scope,$http) {
-
-    var urlBase="";
-    $scope.toggle=true;
+    var urlBase = "";
+    $scope.toggle = true;
     $scope.selection = [];
-    $scope.statuses=['ACTIVE','COMPLETED'];
-    $scope.priorities=['HIGH','LOW','MEDIUM'];
+    $scope.statuses = ['ACTIVE', 'COMPLETED'];
+    $scope.priorities = ['HIGH', 'LOW', 'MEDIUM'];
     $http.defaults.headers.post["Content-Type"] = "application/json";
+
     function findAllTasks() {
         //get all tasks and display initially
-        $http.get(urlBase + '/tasks/search/findByTaskArchived?archivedfalse=0').
-        success(function (data) {
+        $http.get(urlBase + '/tasks/search/findByTaskArchived?archivedfalse=0').success(function (data) {
             if (data._embedded != undefined) {
                 $scope.tasks = data._embedded.tasks;
             } else {
@@ -54,27 +55,27 @@ taskManagerModule.controller('taskManagerController', function ($scope,$http) {
                     $scope.selection.push($scope.tasks[i].taskId);
                 }
             }
-            $scope.taskName="";
-            $scope.taskDesc="";
-            $scope.taskPriority="";
-            $scope.taskStatus="";
-            $scope.toggle='!toggle';
+            $scope.taskName = "";
+            $scope.taskDesc = "";
+            $scope.taskPriority = "";
+            $scope.taskStatus = "";
+            $scope.toggle = '!toggle';
         });
     }
+
     findAllTasks();
     //add a new task
     $scope.addTask = function addTask() {
-        if($scope.taskName=="" || $scope.taskDesc=="" || $scope.taskPriority == "" || $scope.taskStatus == ""){
+        if ($scope.taskName == "" || $scope.taskDesc == "" || $scope.taskPriority == "" || $scope.taskStatus == "") {
             alert("Insufficient Data! Please provide values for task name, description, priortiy and status");
         }
-        else{
+        else {
             $http.post(urlBase + '/tasks', {
                 taskName: $scope.taskName,
                 taskDescription: $scope.taskDesc,
                 taskPriority: $scope.taskPriority,
                 taskStatus: $scope.taskStatus
-            }).
-            success(function(data, status, headers) {
+            }).success(function (data, status, headers) {
                 alert("Task added");
                 var newTaskUri = headers()["location"];
                 console.log("Might be good to GET " + newTaskUri + " and append the task.");
@@ -90,8 +91,7 @@ taskManagerModule.controller('taskManagerController', function ($scope,$http) {
         // is currently selected
         // HTTP PATCH to ACTIVE state
         if (idx > -1) {
-            $http.patch(taskUri, { taskStatus: 'ACTIVE' }).
-            success(function(data) {
+            $http.patch(taskUri, {taskStatus: 'ACTIVE'}).success(function (data) {
                 alert("Task unmarked");
                 findAllTasks();
             });
@@ -100,8 +100,7 @@ taskManagerModule.controller('taskManagerController', function ($scope,$http) {
         // is newly selected
         // HTTP PATCH to COMPLETED state
         else {
-            $http.patch(taskUri, { taskStatus: 'COMPLETED' }).
-            success(function(data) {
+            $http.patch(taskUri, {taskStatus: 'COMPLETED'}).success(function (data) {
                 alert("Task marked completed");
                 findAllTasks();
             });
@@ -110,9 +109,9 @@ taskManagerModule.controller('taskManagerController', function ($scope,$http) {
     };
     // Archive Completed Tasks
     $scope.archiveTasks = function archiveTasks() {
-        $scope.selection.forEach(function(taskUri) {
+        $scope.selection.forEach(function (taskUri) {
             if (taskUri != undefined) {
-                $http.patch(taskUri, { taskArchived: 1});
+                $http.patch(taskUri, {taskArchived: 1});
             }
         });
         alert("Successfully Archived");
@@ -120,15 +119,16 @@ taskManagerModule.controller('taskManagerController', function ($scope,$http) {
         findAllTasks();
     };
 });
+
 //Angularjs Directive for confirm dialog box
-taskManagerModule.directive('ngConfirmClick', [
-    function(){
+app.directive('ngConfirmClick', [
+    function () {
         return {
             link: function (scope, element, attr) {
                 var msg = attr.ngConfirmClick || "Are you sure?";
                 var clickAction = attr.confirmedClick;
-                element.bind('click',function (event) {
-                    if ( window.confirm(msg) ) {
+                element.bind('click', function (event) {
+                    if (window.confirm(msg)) {
                         scope.$eval(clickAction);
                     }
                 });
