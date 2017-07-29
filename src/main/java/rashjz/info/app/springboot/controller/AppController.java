@@ -11,9 +11,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class AppController {
 	public static final Logger logger = LoggerFactory.getLogger(AppController.class);
 	@RequestMapping("/")
-	String home(ModelMap modal) {
-		modal.addAttribute("title","CRUD Example");
-		logger.info("xxxxxxxxxxxxx");
+	String home(ModelMap modelMap) {
+		modelMap.addAttribute("title","CRUD Example");
+		modelMap.addAttribute("content", "indexView");
+		logger.info("main  index ");
 		return "index";
 	}
 
