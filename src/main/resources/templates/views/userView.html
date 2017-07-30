@@ -1,0 +1,20 @@
+<div th:fragment="userView">
+
+
+    <div ng-controller="UserController">
+
+        <div id="task-panel" class="fadein fadeout showpanel panel" style="margin-top: 7%" ng-show="toggle">
+            <div class="panel-heading">
+                <span class="panel-title">Recent users</span>
+            </div>
+            <div class="panel-body">
+                <div ng-repeat="user in myusers">
+                    {{user}}
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+
+</div>

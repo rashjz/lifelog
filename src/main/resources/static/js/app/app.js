@@ -1,15 +1,15 @@
+
+//var app1 = angular.module('crudApp',['ui.router','ngStorage']);
+
+var app = angular.module('taskManagerApp', ['ngAnimate']);
 /*
-var app = angular.module('crudApp',['ui.router','ngStorage']);
 
-
-
-app.config(['$stateProvider', '$urlRouterProvider',
-    function($stateProvider, $urlRouterProvider) {
+app.config(['$stateProvider', '$urlRouterProvider',function($stateProvider, $urlRouterProvider) {
 
         $stateProvider
             .state('home', {
-                url: '/',
-                templateUrl: 'partials/list',
+                url: '/user',
+                templateUrl: 'views/userView',
                 controller:'UserController',
                 controllerAs:'ctrl',
                 resolve: {
@@ -24,8 +24,9 @@ app.config(['$stateProvider', '$urlRouterProvider',
         $urlRouterProvider.otherwise('/');
     }]);
 
+
 */
-var app = angular.module('taskManagerApp', ['ngAnimate']);
+
 app.constant('urls', {
     BASE: 'http://localhost:8080/SpringBootCRUDApp',
     USER_SERVICE_API: 'http://localhost:8080/SpringBootCRUDApp/api/user/',
@@ -64,18 +65,23 @@ app.controller('taskManagerController', function ($scope, $http) {
     }
 
     findAllTasks();
+
+
     //add a new task
     $scope.addTask = function addTask() {
         if ($scope.taskName == "" || $scope.taskDesc == "" || $scope.taskPriority == "" || $scope.taskStatus == "") {
             alert("Insufficient Data! Please provide values for task name, description, priortiy and status");
         }
         else {
-            $http.post(urlBase + '/tasks', {
+            var newtask = {
                 taskName: $scope.taskName,
                 taskDescription: $scope.taskDesc,
                 taskPriority: $scope.taskPriority,
                 taskStatus: $scope.taskStatus
-            }).success(function (data, status, headers) {
+            };
+
+
+            $http.post(urlBase + '/tasks', newtask).success(function (data, status, headers) {
                 alert("Task added");
                 var newTaskUri = headers()["location"];
                 console.log("Might be good to GET " + newTaskUri + " and append the task.");
@@ -107,6 +113,7 @@ app.controller('taskManagerController', function ($scope, $http) {
             $scope.selection.push(taskUri);
         }
     };
+
     // Archive Completed Tasks
     $scope.archiveTasks = function archiveTasks() {
         $scope.selection.forEach(function (taskUri) {

@@ -1,11 +1,12 @@
 'use strict';
 
-angular.module('crudApp').controller('UserController',
+angular.module('taskManagerApp').controller('UserController',
     ['UserService', '$scope',  function( UserService, $scope) {
 
         var self = this;
         self.user = {};
         self.users=[];
+        $scope.myusers = ['user1', 'user2 ', 'MEDIUM'];
 
         self.submit = submit;
         self.getAllUsers = getAllUsers;
