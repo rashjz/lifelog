@@ -18,9 +18,33 @@
 	<properties>
 		<java.version>1.8</java.version>
 		<h2.version>1.4.187</h2.version>
+		<angularjs.version>1.6.4</angularjs.version>
+		<bootstrap.version>3.3.7</bootstrap.version>
+		<jquery.version>3.2.1</jquery.version>
+		<font.awesome.version>4.7.0</font.awesome.version>
 	</properties>
 
 	<dependencies>
+		<dependency>
+			<groupId>org.webjars</groupId>
+			<artifactId>jquery</artifactId>
+			<version>${jquery.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.webjars</groupId>
+			<artifactId>angularjs</artifactId>
+			<version>${angularjs.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.webjars</groupId>
+			<artifactId>bootstrap</artifactId>
+			<version>${bootstrap.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.webjars</groupId>
+			<artifactId>font-awesome</artifactId>
+			<version>${font.awesome.version}</version>
+		</dependency>
 		<!-- Add typical dependencies for a test  -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
