@@ -2,18 +2,18 @@ angular.module('taskManagerApp').controller('taskManagerController', function ($
     var urlBase = "";
     $scope.toggle = true;
     $scope.selection = [];
+    $scope.tasks = [];
     $scope.statuses = ['ACTIVE', 'COMPLETED'];
     $scope.priorities = ['HIGH', 'LOW', 'MEDIUM'];
     $http.defaults.headers.post["Content-Type"] = "application/json";
 
     function findAllTasks() {
         //get all tasks and display initially
-        $http.get(urlBase + '/tasks/search/findByTaskArchived?archivedfalse=0').then(
-            function (data) {
-            if (data._embedded != undefined) {
-                $scope.tasks = data._embedded.tasks;
-            } else {
-                $scope.tasks = [];
+        $http.get(urlBase + 'tasks/search/findByTaskArchived?archivedfalse=0').then(
+            function (successCallback) {
+                console.log(JSON.stringify(successCallback.data)+"cccccccccccccccccccccc")
+            if (successCallback.data != undefined) {
+                $scope.tasks = JSON.stringify(successCallback.data)._embedded.tasks;
             }
             for (var i = 0; i < $scope.tasks.length; i++) {
                 if ($scope.tasks[i].taskStatus == 'COMPLETED') {

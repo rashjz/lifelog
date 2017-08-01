@@ -2,17 +2,11 @@ var app = angular.module('taskManagerApp', ['ngRoute']).config(function ($routeP
     $routeProvider
         .when("/",
             {
-                templateUrl: "index",
+                templateUrl: "/",
                 controller: "taskManagerController",
                 controllerAs: "taskManagerController"
             })
-        /*  .when("/todo",
-              {
-                  templateUrl: "/templates/todo.html",
-                  controller: "ToDoCtrl"
-              })
-              */
-        .otherwise({
+         .otherwise({
             templateUrl: "/"
         });
     $locationProvider.hashPrefix('');

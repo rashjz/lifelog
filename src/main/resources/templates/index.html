@@ -1,15 +1,15 @@
 <html ng-app="taskManagerApp">
-<head lang="en" th:replace="fragments/header :: header"> </head>
+<head lang="en" th:replace="../static/fragments/header :: header"> </head>
 
 <body>
 <div class="container">
 
-    <div th:replace="@{'views/' + ${content}} :: ${content}"></div>
+    <div th:replace="@{'../static/views/' + ${content}} :: ${content}"></div>
 
 </div>
 
 
-<div lang="en" th:replace="fragments/footer :: footer"> </div>
+<div lang="en" th:replace="../static/fragments/footer :: footer"> </div>
 
 </body>
 </html>
