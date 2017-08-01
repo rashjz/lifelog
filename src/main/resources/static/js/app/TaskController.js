@@ -11,11 +11,13 @@ angular.module('taskManagerApp').controller('taskManagerController', function ($
         //get all tasks and display initially
         $http.get(urlBase + 'tasks/search/findByTaskArchived?archivedfalse=0').then(
             function (successCallback) {
-                console.log(JSON.stringify(successCallback.data)+"cccccccccccccccccccccc")
+                // console.log(JSON.stringify(successCallback.data._embedded.tasks)+"cccccccccccccccccccccc")
             if (successCallback.data != undefined) {
-                $scope.tasks = JSON.stringify(successCallback.data)._embedded.tasks;
+                $scope.tasks = successCallback.data._embedded.tasks;
             }
+                console.log($scope.tasks)
             for (var i = 0; i < $scope.tasks.length; i++) {
+
                 if ($scope.tasks[i].taskStatus == 'COMPLETED') {
                     $scope.selection.push($scope.tasks[i].taskId);
                 }
