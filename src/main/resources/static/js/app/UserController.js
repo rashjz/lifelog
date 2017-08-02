@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('taskManagerApp').controller('UserController',
-    ['$scope', 'UserService', function ($scope, UserService) {
+    ['$scope', 'UserService',  function ($scope, UserService) {
 
         var self = this;
         $scope.rowIndex = -1;
@@ -10,12 +10,31 @@ angular.module('taskManagerApp').controller('UserController',
         $scope.users = [];
         var myusers = ['user1', 'user2 ', 'MEDIUM'];
 
-        $scope.selectRow = function(index){
-            if(index == $scope.rowIndex)
+        // $scope.uploadFile = function () {
+        //     var file = $scope.myFile;
+        //
+        //     console.log('file is ');
+        //     console.dir(file);
+        //
+        //     var uploadUrl = "/fileUpload";
+        //
+        //     FileUpload.uploadFileToUrl(file, uploadUrl).then(
+        //         function (response) {
+        //             console.log(JSON.stringify(response.data) + " cccccc")
+        //             // $scope.users = response.data;
+        //         }, function (error) {
+        //             console.log(error + " error  during service call")
+        //             // $scope.users = [];
+        //         });
+        // };
+
+
+        $scope.selectRow = function (index) {
+            if (index == $scope.rowIndex)
                 $scope.rowIndex = -1;
-            else{
+            else {
                 $scope.rowIndex = index;
-                console.log( $scope.rowIndex+"index");
+                console.log($scope.rowIndex + "index");
             }
 
         }
