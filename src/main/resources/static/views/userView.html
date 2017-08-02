@@ -3,18 +3,42 @@
 
     <div ng-controller="UserController">
 
-        <div id="task-panel" class="fadein fadeout showpanel panel" style="margin-top: 7%" ng-show="toggle">
+        <div class="panel-primary" style="margin-top: 9%">
             <div class="panel-heading">
-                <span class="panel-title">Recent users</span>
+                <span class="panel-title">MyUserList</span>
             </div>
             <div class="panel-body">
-                <div ng-repeat="user in myusers">
-                    {{user}}
-                </div>
+                <input class="form-control" style="width: 30%" name="search" id="search" ng-model="searchinput"
+                       placeholder="Search"/>
+                <br/>
+                selected row : {{rowIndex}}
+
+
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Name</th>
+                        <th>Age</th>
+                        <th>Salary</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr ng-repeat="user in users | filter:{name:searchinput}" ng-click="selectRow(user.id)">
+                        <td>{{user.id}}</td>
+                        <td>{{user.name}}</td>
+                        <td>{{user.age}}</td>
+                        <td>{{user.salary}}</td>
+                    </tr>
+                    </tbody>
+                </table>
             </div>
         </div>
 
 
     </div>
 
+
+    <script type="text/javascript" src="./js/app/UserService.js"></script>
+    <script type="text/javascript" src="./js/app/UserController.js"></script>
 </div>

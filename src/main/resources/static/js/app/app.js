@@ -1,38 +1,4 @@
-
-//var app1 = angular.module('crudApp',['ui.router','ngStorage']);
-
 var app = angular.module('taskManagerApp', ['ngAnimate']);
-/*
-
-app.config(['$stateProvider', '$urlRouterProvider',function($stateProvider, $urlRouterProvider) {
-
-        $stateProvider
-            .state('home', {
-                url: '/user',
-                templateUrl: 'views/userView',
-                controller:'UserController',
-                controllerAs:'ctrl',
-                resolve: {
-                    users: function ($q, UserService) {
-                        console.log('Load all users');
-                        var deferred = $q.defer();
-                        UserService.loadAllUsers().then(deferred.resolve, deferred.resolve);
-                        return deferred.promise;
-                    }
-                }
-            });
-        $urlRouterProvider.otherwise('/');
-    }]);
-
-
-*/
-
-app.constant('urls', {
-    BASE: 'http://localhost:8080/SpringBootCRUDApp',
-    USER_SERVICE_API: 'http://localhost:8080/SpringBootCRUDApp/api/user/',
-    TASK_SERVICE_API: 'http://localhost:8080/tasks/'
-});
-
 
 app.controller('taskManagerController', function ($scope, $http) {
 

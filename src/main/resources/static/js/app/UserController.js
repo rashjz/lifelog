@@ -1,15 +1,26 @@
 'use strict';
 
 angular.module('taskManagerApp').controller('UserController',
-    ['UserService', '$scope',  function( UserService, $scope) {
+    ['$scope', 'UserService', function ($scope, UserService) {
 
         var self = this;
-        self.user = {};
-        self.users=[];
-        $scope.myusers = ['user1', 'user2 ', 'MEDIUM'];
+        $scope.rowIndex = -1;
 
+        // self.user = {};
+        $scope.users = [];
+        var myusers = ['user1', 'user2 ', 'MEDIUM'];
+
+        $scope.selectRow = function(index){
+            if(index == $scope.rowIndex)
+                $scope.rowIndex = -1;
+            else{
+                $scope.rowIndex = index;
+                console.log( $scope.rowIndex+"index");
+            }
+
+        }
         self.submit = submit;
-        self.getAllUsers = getAllUsers;
+        // self.getAllUsers = getAllUsers;
         self.createUser = createUser;
         self.updateUser = updateUser;
         self.removeUser = removeUser;
@@ -22,6 +33,20 @@ angular.module('taskManagerApp').controller('UserController',
 
         self.onlyIntegers = /^\d+$/;
         self.onlyNumbers = /^\d+([,.]\d+)?$/;
+
+        function getAllUsers() {
+            UserService.loadAllUsers().then(
+                function (response) {
+                    console.log(JSON.stringify(response.data) + " cccccc")
+                    $scope.users = response.data;
+                }, function (error) {
+                    console.log(error + " error  during service call")
+                    $scope.users = [];
+                });
+        }
+
+        getAllUsers();
+
 
         function submit() {
             console.log('Submitting');
@@ -41,61 +66,57 @@ angular.module('taskManagerApp').controller('UserController',
                     function (response) {
                         console.log('User created successfully');
                         self.successMessage = 'User created successfully';
-                        self.errorMessage='';
+                        self.errorMessage = '';
                         self.done = true;
-                        self.user={};
+                        self.user = {};
                         $scope.myForm.$setPristine();
                     },
                     function (errResponse) {
                         console.error('Error while creating User');
                         self.errorMessage = 'Error while creating User: ' + errResponse.data.errorMessage;
-                        self.successMessage='';
+                        self.successMessage = '';
                     }
                 );
         }
 
 
-        function updateUser(user, id){
+        function updateUser(user, id) {
             console.log('About to update user');
             UserService.updateUser(user, id)
                 .then(
-                    function (response){
+                    function (response) {
                         console.log('User updated successfully');
-                        self.successMessage='User updated successfully';
-                        self.errorMessage='';
+                        self.successMessage = 'User updated successfully';
+                        self.errorMessage = '';
                         self.done = true;
                         $scope.myForm.$setPristine();
                     },
-                    function(errResponse){
+                    function (errResponse) {
                         console.error('Error while updating User');
-                        self.errorMessage='Error while updating User '+errResponse.data;
-                        self.successMessage='';
+                        self.errorMessage = 'Error while updating User ' + errResponse.data;
+                        self.successMessage = '';
                     }
                 );
         }
 
 
-        function removeUser(id){
-            console.log('About to remove User with id '+id);
+        function removeUser(id) {
+            console.log('About to remove User with id ' + id);
             UserService.removeUser(id)
                 .then(
-                    function(){
-                        console.log('User '+id + ' removed successfully');
+                    function () {
+                        console.log('User ' + id + ' removed successfully');
                     },
-                    function(errResponse){
-                        console.error('Error while removing user '+id +', Error :'+errResponse.data);
+                    function (errResponse) {
+                        console.error('Error while removing user ' + id + ', Error :' + errResponse.data);
                     }
                 );
         }
 
 
-        function getAllUsers(){
-            return UserService.getAllUsers();
-        }
-
         function editUser(id) {
-            self.successMessage='';
-            self.errorMessage='';
+            self.successMessage = '';
+            self.errorMessage = '';
             UserService.getUser(id).then(
                 function (user) {
                     self.user = user;
@@ -105,10 +126,11 @@ angular.module('taskManagerApp').controller('UserController',
                 }
             );
         }
-        function reset(){
-            self.successMessage='';
-            self.errorMessage='';
-            self.user={};
+
+        function reset() {
+            self.successMessage = '';
+            self.errorMessage = '';
+            self.user = {};
             $scope.myForm.$setPristine(); //reset Form
         }
     }

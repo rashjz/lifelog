@@ -6,6 +6,12 @@ var app = angular.module('taskManagerApp', ['ngRoute']).config(function ($routeP
                 controller: "taskManagerController",
                 controllerAs: "taskManagerController"
             })
+        .when("/user",
+            {
+                templateUrl: "../../views/userView.html",
+                controller: "UserController",
+                controllerAs: "UserController"
+            })
          .otherwise({
             templateUrl: "/"
         });
@@ -15,6 +21,6 @@ var app = angular.module('taskManagerApp', ['ngRoute']).config(function ($routeP
 
 app.constant('urls', {
     BASE: 'http://localhost:8080/SpringBootCRUDApp',
-    USER_SERVICE_API: 'http://localhost:8080/SpringBootCRUDApp/api/user/',
+    USER_SERVICE_API: 'http://localhost:8080/users/',
     TASK_SERVICE_API: 'http://localhost:8080/tasks/'
 });
