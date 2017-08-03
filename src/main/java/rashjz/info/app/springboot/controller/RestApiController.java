@@ -112,7 +112,7 @@ public class RestApiController {
     }
 
     @PostMapping(value = "/upload/")
-    public ResponseEntity<String> doStuff(@RequestPart("file") MultipartFile file) {
+    public ResponseEntity<String> doStuff(@RequestParam("file") MultipartFile file) {
         //@RequestPart("json") @Valid MyDto dto,
         logger.info("file :::::::::::::::: " + file.getName() + file.getOriginalFilename());
         /*
