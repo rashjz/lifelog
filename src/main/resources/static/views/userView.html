@@ -36,14 +36,16 @@
         </div>
 
 
-        <input type="file" file-model="myFile"/>
-        <button ng-click="uploadFile()">upload me</button>
+        <label class="btn btn-default btn-file">
+            Browse <input ng-file-select="onFileSelect($files)" style="display: none;" type="file" />
+        </label>
+
 
 
     </div>
 
 
-    <!--<script type="text/javascript" src="./js/app/FileUpload.js"></script>-->
+    <script type="text/javascript" src="./js/app/FileUpload.js"></script>
     <script type="text/javascript" src="./js/app/UserService.js"></script>
     <script type="text/javascript" src="./js/app/UserController.js"></script>
 </div>
