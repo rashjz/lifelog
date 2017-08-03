@@ -1,32 +1,25 @@
 'use strict';
 
 angular.module('taskManagerApp').controller('UserController',
-    ['$scope', 'UserService',  function ($scope, UserService) {
+    ['$scope', 'UserService', 'uploadService', function ($scope, UserService, uploadService) {
 
         var self = this;
         $scope.rowIndex = -1;
-
-        // self.user = {};
         $scope.users = [];
-        var myusers = ['user1', 'user2 ', 'MEDIUM'];
 
-        // $scope.uploadFile = function () {
-        //     var file = $scope.myFile;
-        //
-        //     console.log('file is ');
-        //     console.dir(file);
-        //
-        //     var uploadUrl = "/fileUpload";
-        //
-        //     FileUpload.uploadFileToUrl(file, uploadUrl).then(
-        //         function (response) {
-        //             console.log(JSON.stringify(response.data) + " cccccc")
-        //             // $scope.users = response.data;
-        //         }, function (error) {
-        //             console.log(error + " error  during service call")
-        //             // $scope.users = [];
-        //         });
-        // };
+
+        $scope.onFileSelect = function (files) {
+            console.info('files', files);
+            uploadService.uploadFileToUrl(files).then(
+                function (response) {
+                    console.log(JSON.stringify(response.data) + " cccccc")
+                    // $scope.users = response.data;
+                }, function (error) {
+                    console.log(error + " error  during service call")
+                    // $scope.users = [];
+                });
+        };
+
 
 
         $scope.selectRow = function (index) {
