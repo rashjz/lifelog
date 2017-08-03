@@ -12,7 +12,11 @@ var app = angular.module('taskManagerApp', ['ngRoute']).config(function ($routeP
                 controller: "UserController",
                 controllerAs: "UserController"
             })
-         .otherwise({
+        .when('/login', {
+        templateUrl: 'login.html',
+        controller: 'navigation'
+    })
+        .otherwise({
             templateUrl: "/"
         });
     $locationProvider.hashPrefix('');

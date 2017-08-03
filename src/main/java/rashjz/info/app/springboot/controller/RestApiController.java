@@ -1,5 +1,8 @@
 package rashjz.info.app.springboot.controller;
 
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.List;
 
 import org.slf4j.Logger;
@@ -115,13 +118,16 @@ public class RestApiController {
     public ResponseEntity<String> doStuff(@RequestParam("file") MultipartFile file) {
         //@RequestPart("json") @Valid MyDto dto,
         logger.info("file :::::::::::::::: " + file.getName() + file.getOriginalFilename());
-        /*
 
-		  // Get the file and save it somewhere
+        try {
+            // Get the file and save it somewhere
             byte[] bytes = file.getBytes();
-            Path path = Paths.get("C:\UBS\Dev\rashjz" + file.getOriginalFilename());
+            Path path = Paths.get("D:\\" + file.getOriginalFilename());
             Files.write(path, bytes);
-		 */
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
         return new ResponseEntity<String>(HttpStatus.NO_CONTENT);
     }
 
