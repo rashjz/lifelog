@@ -1,35 +1,66 @@
 package rashjz.info.app.springboot.model;
 
-import org.hibernate.annotations.GeneratorType;
-import org.hibernate.validator.constraints.NotEmpty;
+import java.util.Set;
 
-import javax.persistence.*;
-import java.io.Serializable;
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.Table;
+
+import org.hibernate.validator.constraints.Email;
+import org.hibernate.validator.constraints.Length;
+import org.hibernate.validator.constraints.NotEmpty;
+import org.springframework.data.annotation.Transient;
 
 @Entity
-@Table(name="APP_USER")
-public class User implements Serializable{
+@Table(name = "user")
+public class User {
 
 	@Id
-	@GeneratedValue
-	private Long id;
-
-	@NotEmpty
-	@Column(name="NAME", nullable=false)
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name = "user_id")
+	private int id;
+	@Column(name = "email")
+	@Email(message = "*Please provide a valid Email")
+	@NotEmpty(message = "*Please provide an email")
+	private String email;
+	@Column(name = "password")
+	@Length(min = 5, message = "*Your password must have at least 5 characters")
+	@NotEmpty(message = "*Please provide your password")
+	@Transient
+	private String password;
+	@Column(name = "name")
+	@NotEmpty(message = "*Please provide your name")
 	private String name;
+	@Column(name = "last_name")
+	@NotEmpty(message = "*Please provide your last name")
+	private String lastName;
+	@Column(name = "active")
+	private int active;
+	@ManyToMany(cascade = CascadeType.ALL)
+	@JoinTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
+	private Set<Role> roles;
 
-	@Column(name="AGE", nullable=false)
-	private Integer age;
-
-	@Column(name="SALARY", nullable=false)
-	private double salary;
-
-	public Long getId() {
+	public int getId() {
 		return id;
 	}
 
-	public void setId(Long id) {
+	public void setId(int id) {
 		this.id = id;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
 	}
 
 	public String getName() {
@@ -40,61 +71,36 @@ public class User implements Serializable{
 		this.name = name;
 	}
 
-	public Integer getAge() {
-		return age;
+	public String getLastName() {
+		return lastName;
 	}
 
-	public void setAge(Integer age) {
-		this.age = age;
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
 	}
 
-	public double getSalary() {
-		return salary;
+	public String getEmail() {
+		return email;
 	}
 
-	public void setSalary(double salary) {
-		this.salary = salary;
+	public void setEmail(String email) {
+		this.email = email;
 	}
 
-	public User() {
+	public int getActive() {
+		return active;
 	}
 
-	public User(String name, Integer age, double salary) {
-		this.name = name;
-		this.age = age;
-		this.salary = salary;
+	public void setActive(int active) {
+		this.active = active;
 	}
 
-	@Override
-	public boolean equals(Object o) {
-		if (this == o) return true;
-		if (o == null || getClass() != o.getClass()) return false;
-
-		User user = (User) o;
-
-		if (Double.compare(user.salary, salary) != 0) return false;
-		if (id != null ? !id.equals(user.id) : user.id != null) return false;
-		if (name != null ? !name.equals(user.name) : user.name != null) return false;
-		return age != null ? age.equals(user.age) : user.age == null;
+	public Set<Role> getRoles() {
+		return roles;
 	}
 
-	@Override
-	public int hashCode() {
-		int result;
-		long temp;
-		result = id != null ? id.hashCode() : 0;
-		result = 31 * result + (name != null ? name.hashCode() : 0);
-		result = 31 * result + (age != null ? age.hashCode() : 0);
-		temp = Double.doubleToLongBits(salary);
-		result = 31 * result + (int) (temp ^ (temp >>> 32));
-		return result;
+	public void setRoles(Set<Role> roles) {
+		this.roles = roles;
 	}
-
-	@Override
-	public String toString() {
-		return "User [id=" + id + ", name=" + name + ", age=" + age
-				+ ", salary=" + salary + "]";
-	}
-
 
 }
