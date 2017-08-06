@@ -4,6 +4,7 @@ import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.NotEmpty;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.util.Date;
 
 
@@ -26,7 +27,6 @@ public class Content {
 
 
     @ManyToOne(cascade = CascadeType.ALL)
-    @NotEmpty(message = "*Please provide a content type")
     public ContentType contentType;
 
 
@@ -147,30 +147,6 @@ public class Content {
                 ", note='" + note + '\'' +
                 ", status='" + status + '\'' +
                 '}';
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof Content)) return false;
-
-        Content content = (Content) o;
-
-        if (getId() != content.getId()) return false;
-        if (getTitle() != null ? !getTitle().equals(content.getTitle()) : content.getTitle() != null) return false;
-        if (getDescription() != null ? !getDescription().equals(content.getDescription()) : content.getDescription() != null)
-            return false;
-        if (getContentType() != null ? !getContentType().equals(content.getContentType()) : content.getContentType() != null)
-            return false;
-        if (getInsertDate() != null ? !getInsertDate().equals(content.getInsertDate()) : content.getInsertDate() != null)
-            return false;
-        if (getImagePath() != null ? !getImagePath().equals(content.getImagePath()) : content.getImagePath() != null)
-            return false;
-        if (getVideoPath() != null ? !getVideoPath().equals(content.getVideoPath()) : content.getVideoPath() != null)
-            return false;
-        if (getAuthor() != null ? !getAuthor().equals(content.getAuthor()) : content.getAuthor() != null) return false;
-        if (getNote() != null ? !getNote().equals(content.getNote()) : content.getNote() != null) return false;
-        return getStatus() != null ? getStatus().equals(content.getStatus()) : content.getStatus() == null;
     }
 
 }

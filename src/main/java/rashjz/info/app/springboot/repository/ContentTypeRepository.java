@@ -5,6 +5,8 @@ import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 import org.springframework.stereotype.Repository;
 import rashjz.info.app.springboot.model.ContentType;
 
+import javax.persistence.criteria.CriteriaBuilder;
+
 @RepositoryRestResource
 public interface ContentTypeRepository extends JpaRepository<ContentType, Integer> {
 
