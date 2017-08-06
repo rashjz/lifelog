@@ -17,11 +17,9 @@ import org.springframework.security.web.csrf.CsrfTokenRepository;
 import org.springframework.security.web.csrf.HttpSessionCsrfTokenRepository;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
-//import static rashjz.info.app.springboot.configuration.CsrfGrantingFilter.X_XSRF_TOKEN;
 
 @Configuration
 @EnableWebSecurity
-//@EnableSpringHttpSession
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
 	@Autowired
@@ -81,19 +79,4 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 	}
 
 
-//	//new
-//	private CsrfTokenRepository csrfTokenRepository() {
-//		HttpSessionCsrfTokenRepository repository = new HttpSessionCsrfTokenRepository();
-//		repository.setHeaderName(X_XSRF_TOKEN);
-//		return repository;
-//	}
-//	@Bean
-//	public SessionRepository sessionRepository() {
-//		return new MapSessionRepository();
-//	}
-//
-//	@Bean
-//	public HeaderHttpSessionStrategy sessionStrategy() {
-//		return new HeaderHttpSessionStrategy();
-//	}
 }

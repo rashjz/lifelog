@@ -1,6 +1,4 @@
 # Created by .ignore support plugin (hsz.mobi)
 .gitignore
 .idea/
-src/main/resources/static/images/
-src/main/resources/templates/admin/
 target/

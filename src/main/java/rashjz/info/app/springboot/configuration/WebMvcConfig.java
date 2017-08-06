@@ -17,12 +17,6 @@ public class WebMvcConfig extends WebMvcConfigurerAdapter {
 	}
 
 
-//	@Override
-//	public void addResourceHandlers(ResourceHandlerRegistry registry) {
-//		registry.addResourceHandler("/uploads/**").addResourceLocations("file:/path/to/my/dropbox/");
-//	}
-
-
 	@Override
 	public void addResourceHandlers(ResourceHandlerRegistry registry) {
 		registry.addResourceHandler("/resources/**").addResourceLocations("/resources/");
