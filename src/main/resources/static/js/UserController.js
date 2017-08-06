@@ -12,7 +12,7 @@ angular.module('taskManagerApp').controller('UserController',
             console.info('files', files);
             uploadService.uploadFileToUrl(files).then(
                 function (response) {
-                    console.log(JSON.stringify(response.data) + " cccccc")
+                    console.log(JSON.stringify(response) + " cccccc")
                     // $scope.users = response.data;
                 }, function (error) {
                     console.log(error + " error  during service call")
@@ -49,7 +49,7 @@ angular.module('taskManagerApp').controller('UserController',
         function getAllUsers() {
             UserService.loadAllUsers().then(
                 function (response) {
-                    console.log(JSON.stringify(response.data) + " cccccc")
+                    console.log(JSON.stringify(response) + " cccccc")
                     $scope.users = response.data;
                 }, function (error) {
                     console.log(error + " error  during service call")

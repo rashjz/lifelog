@@ -20,6 +20,10 @@ public class Task {
     private String taskStatus;
     @Column(name="task_archived")
     private int taskArchived = 0;
+
+    public Task() {
+    }
+
     public int getTaskId() {
         return id;
     }
