@@ -1,0 +1,681 @@
+
+article, aside, details, figcaption, figure, footer, header, main, menu, nav, section, summary {
+    display: block;
+}
+
+[hidden], template {
+    display: none;
+}
+
+/*--------------------------------------------------------------
+# Elements
+--------------------------------------------------------------*/
+html {
+    box-sizing: border-box;
+}
+
+*, *:before, *:after {
+    box-sizing: inherit;
+}
+
+li > ul, li > ol {
+    margin-bottom: 0;
+    margin-left: 1.5em;
+}
+
+img {
+    height: auto; /* Make sure images are scaled correctly. */
+    max-width: 100%; /* Adhere to container width. */
+}
+
+input[type="text"], input[type="email"], input[type="url"], input[type="password"], input[type="search"], textarea {
+    color: #666;
+    border: 1px solid #ccc; /*border-radius: 3px;*/
+}
+
+input[type="text"]:focus, input[type="email"]:focus, input[type="url"]:focus, input[type="password"]:focus, input[type="search"]:focus, textarea:focus {
+    color: #111;
+}
+
+input[type="text"], input[type="email"], input[type="url"], input[type="password"], input[type="search"] {
+    /*padding: 3px;*/
+}
+
+textarea {
+    padding-left: 3px;
+    width: 100%;
+}
+
+/*--------------------------------------------------------------
+## Menus
+--------------------------------------------------------------*/
+
+/* Small menu. */
+.menu-toggle, .main-navigation.toggled ul {
+    display: block;
+}
+
+#lifegrid li > div {
+    margin: 0 0 30px !important;
+}
+
+.life-content {
+    text-align: center;
+}
+
+.entry-content p {
+    font-size: 16px;
+    line-height: 24px;
+}
+
+.form input, .form select, .form textarea {
+    font-family: 'Work Sans', sans-serif;
+    width: 100%;
+    color: #444748;
+    border: none;
+    border-bottom: 1px solid #bbbbbb;
+    padding: 10px 0 15px;
+    margin: 0;
+    margin-bottom: 3px;
+    outline: none;
+}
+
+.form textarea {
+    border: 1px solid #bbbbbb;
+    resize: none;
+    min-height: 350px;
+}
+
+.comment-form {
+    margin: auto;
+    max-width: 600px;
+}
+
+.form-submit input[type="submit"] {
+    padding: 0 25px;
+    border: 3px solid #000;
+    font-size: 20px;
+    height: 70px;
+    min-width: 250px;
+    display: inline-block;
+    margin: 0 auto;
+    text-transform: uppercase;
+    background-color: transparent;
+    color: #000;
+    font-weight: 500;
+    transition: background 0.5s ease, color 0.5s ease;
+}
+
+.form-submit input[type="submit"]:hover {
+    background: #000;
+    color: #fff;
+}
+
+.entry-meta {
+    padding: 10px 0px;
+}
+
+.comment-reply-title {
+    padding: 10px 0px;
+}
+
+/*============================  life Article Section Css Here=====================
+  ========================================================================= */
+.life-article-section {
+    margin: 100px 0 0;
+    padding: 0px;
+    float: left;
+    width: 100%;
+}
+
+.article-block {
+    float: left;
+    margin-bottom: 50px;
+    width: 100%;
+}
+
+.article-img img {
+    width: 100%;
+}
+
+.widget_recent_entries, .post-block {
+    float: left;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+
+.recent-posts-widget-with-thumbnails .widget-title, .widget_categories .widget-title, .widget_recent_entries .widget-title, .post-block h3 {
+    font-size: 20px;
+    font-weight: 400;
+    margin: 50px 0 20px;
+}
+
+.post-list {
+    float: left;
+    margin: 0 0 20px;
+    padding: 0;
+    width: 100%;
+}
+
+.post-image {
+    float: left;
+    margin-right: 6%;
+    width: 38%;
+}
+
+.post-image img {
+    width: 100%;
+}
+
+.post-detail {
+    float: left;
+    width: 56%;
+}
+
+.widget a, .post-detail label {
+    color: #46defa;
+    font-size: 14px;
+    font-weight: 500;
+    margin-bottom: 0px;
+}
+
+.widget .rpwwt-post-date, .post-detail span {
+    font-size: 13px;
+    font-weight: 400;
+    margin-top: 15px;
+}
+
+.article-detail {
+    float: left;
+    margin: 40px 0;
+    width: 100%;
+}
+
+.article-detail span {
+    float: left;
+    font-size: 13px;
+    font-weight: 100;
+    margin: 0 5px 0 0;
+    width: auto;
+}
+
+.meta-title {
+    float: left;
+    width: 100%;
+    margin: 10px 0 50px;
+}
+
+.post-categories {
+    float: left;
+}
+
+.post-categories li {
+    float: left;
+    font-weight: 500;
+    padding: 0 2px;
+}
+
+.post-categories li a:hover {
+    color: #46defa;
+}
+
+.no-mar {
+    margin: 0px !important;
+}
+
+.article-detail p {
+    float: left;
+    width: 100%;
+    margin: 0 0 30px;
+    font-size: 16px;
+}
+
+.article-detail p strong {
+    float: left;
+    width: 100%;
+    font-size: 16px;
+}
+
+.article-detail blockquote p, .small-para {
+    color: #46defa;
+    float: left;
+    font-size: 40px;
+    font-weight: 100;
+    line-height: 48px;
+    margin: 50px 0;
+    width: 100%;
+}
+
+.article-detail blockquote {
+    padding: 0;
+    margin: 0;
+    font-size: 0;
+    border-left: 0;
+}
+
+.article-detail blockquote p:last-child {
+    margin-bottom: 50px;
+}
+
+.footer {
+    float: left;
+    padding-top: 150px;
+    width: 100%;
+}
+
+.widget_categories, .post-category {
+    float: left;
+    margin: 50px 0 0;
+    width: 100%;
+}
+
+.post-category h3 {
+    font-size: 20px;
+    font-weight: 400;
+    margin: 50px 0 20px;
+}
+
+.widget_categories ul, .post-category ul {
+    margin: 0px;
+    padding: 0px;
+}
+
+.widget_categories ul li, .post-category ul li {
+    margin: 0px;
+    list-style: none;
+    float: left;
+    width: 100%;
+}
+
+.widget_categories ul li a, .post-category ul li a {
+    border-bottom: 1px solid #e6e8e8;
+    color: #999;
+    display: block;
+    font-size: 14px;
+    font-weight: 300;
+    margin: 0;
+    padding: 11px 0;
+}
+
+.widget_categories ul li a:hover, .post-category ul li a:hover {
+    color: #46defa;
+}
+
+/***********End life Css *********************/
+
+/*--------------------------------------------------------------
+## Posts and pages
+--------------------------------------------------------------*/
+
+.hentry {
+    margin: 0 0 1.5em;
+}
+
+.byline, .updated:not(.published) {
+    display: none;
+}
+
+.single .byline, .group-blog .byline {
+    display: inline;
+}
+
+.page-content, .entry-content, .entry-summary {
+    margin: 1em 0 0;
+}
+
+.page-links {
+    clear: both;
+    margin: 0 0 1.5em;
+}
+
+/*--------------------------------------------------------------
+# Media
+--------------------------------------------------------------*/
+.page-content .wp-smiley, .entry-content .wp-smiley, .comment-content .wp-smiley {
+    border: none;
+    margin-bottom: 0;
+    margin-top: 0;
+    padding: 0;
+}
+
+/* Make sure embeds and iframes fit their containers. */
+embed, iframe, object {
+    max-width: 100%;
+}
+
+/********************All Media Query Start Here*********************************/
+
+@media (max-width: 1440px) {
+    .article-detail blockquote p, .small-para {
+        font-size: 36px;
+        font-weight: 100;
+        line-height: 44px;
+    }
+
+}
+
+.article-detail blockquote p, .small-para {
+    font-size: 36px;
+    line-height: 40px;
+}
+
+.article-detail p {
+    font-size: 16px;
+}
+
+.recent-posts-widget-with-thumbnails .widget-title, .widget_categories .widget-title, .widget_recent_entries .widget-title, .post-block h3 {
+    font-size: 16px;
+}
+
+.article-detail p strong {
+    font-size: 16px;
+}
+
+.article-block {
+    margin-bottom: 0px;
+}
+
+.article-detail {
+    margin-bottom: 0px;
+}
+
+.post-categories li a {
+    font-size: 11px;
+}
+
+.article-detail p {
+    font-size: 15px;
+}
+
+.article-detail p strong {
+    font-size: 16px;
+}
+
+@media (max-width: 640px) {
+
+    .article-detail blockquote p, .small-para {
+        font-size: 24px;
+        font-weight: 100;
+        line-height: 30px;
+    }
+
+    .article-detail p {
+        font-size: 13px;
+    }
+
+    .article-detail p strong {
+        font-size: 13px;
+    }
+
+    .life-article-section {
+        margin-top: 30px;
+    }
+
+    .article-block {
+        margin-bottom: 0px;
+    }
+
+    .article-detail {
+        margin-bottom: 0px;
+    }
+
+    .article-detail blockquote p, .small-para {
+        font-size: 24px;
+        line-height: 30px;
+    }
+}
+
+/*============================ Life Page ==================================
+  ========================================================================= */
+
+.gridcontainer {
+    max-width: 1100px;
+    display: block;
+    margin: 0 auto;
+}
+
+.lifesection {
+    width: 100%;
+    float: left;
+    border-top: 1px solid #d0d7d9;
+    border-bottom: 1px solid #d0d7d9;
+    background-color: #fff;
+}
+
+.life-search {
+    width: 100%;
+    position: relative;
+    height: 50px;
+    margin: 20px 0;
+}
+
+.life-search .searchbtn {
+    cursor: pointer;
+    height: 30px;
+    width: 30px;
+    float: right;
+    padding: 9px;
+    margin: 1px;
+    background: #1c9cda;
+    z-index: 1;
+    box-sizing: content-box;
+    position: relative;
+}
+
+.life-search .searchbtn i {
+    font-size: 20px;
+    padding: 5px;
+    color: #fff;
+}
+
+.life-search .search-input {
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 0;
+    transition: width 1s ease, border 0.1s ease;
+    height: 100%;
+    border: none;
+    text-align: center;
+    z-index: 1;
+}
+
+.life-search .search-input.stretch {
+    width: 100%;
+    border: 1px solid #1c9cda;
+}
+
+.paging {
+    text-align: center;
+    display: block;
+    margin: 35px 0;
+}
+
+.paging-button {
+    width: 300px;
+    height: 50px;
+    margin: 0 8px;
+    font-weight: 500;
+    display: inline-block;
+    line-height: 45px;
+    font-size: 18px;
+    background-color: black;
+    color: #fff;
+}
+
+#srch-btn-go {
+    /* float: right; */
+    position: absolute;
+    box-sizing: content-box;
+    right: -1px;
+    top: -1px;
+    background: transparent url(../images/search-icon.png) no-repeat center center;
+    text-indent: -99999px;
+    width: 30px;
+    height: 30px;
+    padding: 9px;
+    margin: 1px;
+}
+
+.blue {
+    color: #46defa
+}
+
+/*============================ Responsive  ================================
+  ========================================================================= */
+
+@media screen and (max-width: 1200px) {
+    .gridcontainer {
+        max-width: 900px;
+    }
+
+    .entry-content p {
+        font-size: 15px;
+        line-height: 21px;
+    }
+
+    .evntheader {
+        margin: 0px;
+    }
+}
+
+@media screen and (min-width: 1024px) {
+    .section {
+        min-height: 100vh;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .life-search {
+        height: 50px;
+        margin: 20px auto;
+        position: relative;
+        width: 96%;
+    }
+
+    .evntheader {
+        font-size: 16px;
+    }
+}
+
+#lifegrid {
+    margin: 10px;
+}
+
+#lifegrid li {
+    left: 0;
+
+    top: 0;
+
+    opacity: 0;
+
+    transform: translateY(100px);
+
+}
+
+#lifegrid li.show {
+    opacity: 1;
+
+    transform: translateY(0);
+
+    transition: all 0.3s, top 1s;
+
+}
+
+#lifegrid li > div {
+
+    color: rgba(0, 0, 0, 0.6);
+
+    font-size: 20px;
+
+    border-radius: 3px;
+
+    margin: 18px;
+
+    background: rgb(255, 255, 255);
+
+    border: 1px solid rgba(038, 191, 64, 0);
+    transition: all 0.5s;
+    text-align: center;
+}
+
+#lifegrid > li:hover {
+
+    transform: translateY(-10px);
+
+    /* border: 1px solid rgba(038, 191, 64, 1);*/
+
+    box-shadow: 0 10px 15px rgba(125, 125, 125, 0.1);
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+    transition: all 0.3s;
+}
+
+.lifeimgcont {
+
+    position: relative;
+
+}
+
+.lifeimgcont img {
+    width: 100%;
+}
+
+.lifeimgcont .eventdate {
+    background: rgba(255, 255, 255, 0.7);
+    box-sizing: border-box;
+    font-weight: 300;
+    left: 15px;
+    line-height: 1;
+    padding: 8px;
+    position: absolute;
+    top: 15px;
+    width: 60px;
+    font-size: 14px;
+}
+
+.lifeimgcont .eventdate strong {
+    font-weight: 500;
+    font-size: 24px;
+}
+
+.eventsocialinks {
+    display: inline-block;
+    margin: 30px 0;
+}
+
+.eventsocialinks a .fa {
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    background: #c6c6c6;
+    transition: background 0.5s ease;
+    color: #fff;
+    font-size: 16px;
+    line-height: 35px;
+}
+
+.eventsocialinks a:hover .fa {
+    background: #000;
+}
+
+.evntheader {
+    color: #46defa;
+    font-weight: 500;
+    margin: 15px 0;
+    text-align: center;
+
+}
+
+img.wp-smiley,
+img.emoji {
+    display: inline !important;
+    border: none !important;
+    box-shadow: none !important;
+    height: 1em !important;
+    width: 1em !important;
+    margin: 0 .07em !important;
+    vertical-align: -0.1em !important;
+    background: none !important;
+    padding: 0 !important;
+}
