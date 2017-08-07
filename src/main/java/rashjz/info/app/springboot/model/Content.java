@@ -26,7 +26,8 @@ public class Content {
     private String description;
 
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(optional = false, cascade = CascadeType.REFRESH)
+    @JoinColumn(name = "type_id")
     public ContentType contentType;
 
 
