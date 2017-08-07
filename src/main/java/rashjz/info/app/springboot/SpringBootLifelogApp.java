@@ -28,6 +28,8 @@ public class SpringBootLifelogApp {
 			contentType.setStatus("a");
 			contentTypeRepository.save(contentType);
 */
+
+        /*
             ContentType contentType = contentTypeRepository.findOne(1);
             System.out.println(contentType.getName() + "::::::::::::::::::::::::::");
             Content content = new Content();
@@ -46,7 +48,7 @@ public class SpringBootLifelogApp {
             content.setStatus("a");
 
             contentRepository.save(content);
-
+*/
 
 //			userRepository.save(new User("Mamed", 1, 12d));
 //			Task task = new Task();

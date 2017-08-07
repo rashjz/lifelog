@@ -6,9 +6,9 @@ import org.springframework.stereotype.Repository;
 import rashjz.info.app.springboot.model.Content;
 import rashjz.info.app.springboot.model.Role;
 
-@RepositoryRestResource
+@Repository
 public interface ContentRepository extends JpaRepository<Content, Integer> {
 
-    Role findByTitle(String title);
+    Content findByTitle(String title);
 
 }
