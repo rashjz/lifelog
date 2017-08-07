@@ -24,6 +24,12 @@ public class NavigationController {
         logger.info("user fragment called ::::::::::::::::::::::::");
         return "index";
     }
-
+    
+    @GetMapping("/content")
+    String getContentPage(ModelMap modelMap) {
+        modelMap.addAttribute("content", "content");
+        logger.info("content fragment called ::::::::::::::::::::::::");
+        return "index";
+    }
 
 }
