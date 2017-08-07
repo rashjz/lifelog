@@ -1,0 +1,134 @@
+<div th:fragment="content">
+
+
+    <div style="margin-top: 7%;" >
+
+
+
+
+
+        <div id="page" class="hfeed site site-container">
+            <div class="site-pusher">
+                <section class="lifesection">
+                    <div class="gridcontainer">
+                        <!--<div class="life-search">-->
+                            <!--<form role="search" method="get" class="searchform group" action="">-->
+                                <!--<input type="search" class="search-input" placeholder="Search Your Life Style" value="" name="s" onkeyup="buttonUp();" title="Search for:">-->
+                                <!--<input type="submit" id="srch-btn-go" class="btn btn-peach searchbox-submit" value="GO" name="sa">-->
+                                <!--<div class="searchbtn"><i class="fa fa-search" aria-hidden="true"></i></div>-->
+                            <!--</form>-->
+                        <!--</div>-->
+                        <ul id="lifegrid" style="position: relative; height: 1911px;">
+
+
+
+                            <li class="col-md-4 col-xs-12 life-content evenpost show" style="position: absolute; width: 310px; left: 385px; top: 0px;">
+                                <div class="lifeimgcont">
+                                    <a href="#"><img width="3877" height="3102" src="http://www.boldrfit.com/life/wp-content/uploads/2017/04/michelle-pic.jpg" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" sizes="(max-width: 3877px) 100vw, 3877px"> </a>
+                                    <div class="eventdate"> <strong>27</strong> Apr </div>
+                                </div>
+                                <h4 class="evntheader"><a href="#">4 Reasons You’re Not As Healthy As You Think You Are!</a></h4>
+                                <article id="post-298" class="post-298 post type-post status-publish format-standard has-post-thumbnail hentry category-health category-holistic category-natural category-nutrition category-wellness category-womens-health tag-balance tag-habit tag-health tag-holistic tag-inspiration tag-life tag-wellness tag-womens-health">
+                                    <div class="entry-content">
+                                        <p>This week we feature our first guest blogger expert, Michelle Kapler, R.Ac.! She is...</p>
+                                    </div>
+                                    <!-- .entry-content -->
+                                </article>
+                                <!-- #post-## -->
+                                <div class="eventsocialinks"> <a href="#" target="_blank" class="fb-share"><i class="fa fa-facebook" aria-hidden="true"></i></a> <a href="#" target="_blank" class="fb-share"><i class="fa fa-twitter" aria-hidden="true"></i></a> </div>
+                            </li>
+
+
+                            <li class="col-md-4 col-xs-12 life-content oddpost show" >
+                                <div class="lifeimgcont">
+                                    <a href=""><img width="2908" height="3352" src="http://www.boldrfit.com/life/wp-content/uploads/2017/04/FullSizeRender.jpg" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" sizes="(max-width: 2908px) 100vw, 2908px"> </a>
+                                    <div class="eventdate"> <strong>09</strong> Apr </div>
+                                </div>
+                                <h4 class="evntheader"><a href="#">Buttery-Cinnamon-Pear Overnight Oat Breakfast Bowl Delight</a></h4>
+                                <article id="post-259" class="post-259 post type-post status-publish format-standard has-post-thumbnail hentry category-nutrition category-recipe">
+                                    <div class="entry-content">
+                                        <p>Did that title get your attention? It’s a mouthful but stay with me because...</p>
+                                    </div>
+                                    <!-- .entry-content -->
+                                </article>
+                                <!-- #post-## -->
+                                <div class="eventsocialinks"> <a href="" target="_blank" class="fb-share"><i class="fa fa-facebook" aria-hidden="true"></i></a> <a href="" target="_blank" class="fb-share"><i class="fa fa-twitter" aria-hidden="true"></i></a> </div>
+                            </li>
+
+                            <li class="col-md-4 col-xs-12 life-content evenpost show" >
+                                <div class="lifeimgcont">
+                                    <a href=""><img width="3212" height="2408" src="http://www.boldrfit.com/life/wp-content/uploads/2017/03/breathing-its-kind-of-a-big-deal.jpg" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" srcset="" sizes="(max-width: 3212px) 100vw, 3212px"> </a>
+                                    <div class="eventdate"> <strong>29</strong> Mar </div>
+                                </div>
+                                <h4 class="evntheader"><a href="">So Simple.  So Clean.</a></h4>
+                                <article id="post-253" class="post-253 post type-post status-publish format-standard has-post-thumbnail hentry category-fitness category-health category-nutrition category-recipe">
+                                    <div class="entry-content">
+                                        <p>Simple.  Clean.  15 minutes. This works for lunch or dinner and it’s satisfyingly clean...</p>
+                                    </div>
+                                    <!-- .entry-content -->
+                                </article>
+                                <!-- #post-## -->
+                                <div class="eventsocialinks"> <a href="" target="_blank" class="fb-share"><i class="fa fa-facebook" aria-hidden="true"></i></a> <a href="" target="_blank" class="fb-share"><i class="fa fa-twitter" aria-hidden="true"></i></a> </div>
+                            </li>
+
+
+                            <li class="col-md-4 col-xs-12 life-content oddpost show" >
+                                <div class="lifeimgcont">
+                                    <a href=""><img width="2540" height="2404" src="http://www.boldrfit.com/life/wp-content/uploads/2017/03/Mango-Ginger.jpg" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" sizes="(max-width: 2540px) 100vw, 2540px"> </a>
+                                    <div class="eventdate"> <strong>13</strong> Mar </div>
+                                </div>
+                                <h4 class="evntheader"><a href="">Mango Madness!</a></h4>
+                                <article id="post-243" class="post-243 post type-post status-publish format-standard has-post-thumbnail hentry category-nutrition category-recipe">
+                                    <div class="entry-content">
+                                        <p>Mango Madness Chia Pudding + Smoothie + Popsicles With this mango madness you are...</p>
+                                    </div>
+                                    <!-- .entry-content -->
+                                </article>
+                                <!-- #post-## -->
+                                <div class="eventsocialinks"> <a href="" target="_blank" class="fb-share"><i class="fa fa-facebook" aria-hidden="true"></i></a> <a href="" target="_blank" class="fb-share"><i class="fa fa-twitter" aria-hidden="true"></i></a> </div>
+                            </li>
+
+
+                            <li class="col-md-4 col-xs-12 life-content evenpost show" >
+                                <div class="lifeimgcont">
+                                    <a href=""><img width="3024" height="4032" src="http://www.boldrfit.com/life/wp-content/uploads/2017/03/quinoa.jpg" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" sizes="(max-width: 3024px) 100vw, 3024px"> </a>
+                                    <div class="eventdate"> <strong>11</strong> Mar </div>
+                                </div>
+                                <h4 class="evntheader"><a href="">Protein Pancakes</a></h4>
+                                <article id="post-229" class="post-229 post type-post status-publish format-standard has-post-thumbnail hentry category-health category-nutrition category-recipe category-uncategorized tag-clean-eating tag-healthy-eating tag-healthy-recipes tag-pancakes">
+                                    <div class="entry-content">
+                                        <p>Who doesn’t love a good pancake? Growing up, my mom made us buttermilk pancakes...</p>
+                                    </div>
+                                    <!-- .entry-content -->
+                                </article>
+                                <!-- #post-## -->
+                                <div class="eventsocialinks"> <a href="" target="_blank" class="fb-share"><i class="fa fa-facebook" aria-hidden="true"></i></a> <a href="" target="_blank" class="fb-share"><i class="fa fa-twitter" aria-hidden="true"></i></a> </div>
+                            </li>
+
+
+
+                        </ul>
+                        <div class="clearfix"></div>
+                        <!--<div class="paging">-->
+                            <!--<a href="" class="paging-button com-btn">></a> -->
+                        <!--</div>-->
+                    </div>
+                    <!-- #primary -->
+                </section>
+            </div>
+        </div>
+
+
+
+
+
+
+
+
+
+
+    </div>
+
+    <!--<script type="text/javascript" src="../js/TaskController.js"></script>-->
+
+</div>
