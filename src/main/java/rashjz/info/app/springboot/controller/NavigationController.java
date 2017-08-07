@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class NavigationController {
     public static final Logger logger = LoggerFactory.getLogger(NavigationController.class);
 
-    @GetMapping({"/","/index"})
+    @GetMapping("/task")
     String home(ModelMap modelMap) {
         modelMap.addAttribute("content", "task");
         logger.info("task fragment called ::::::::::::::::::::::::");
@@ -25,7 +25,7 @@ public class NavigationController {
         return "index";
     }
     
-    @GetMapping("/content")
+    @GetMapping({"/","/content"})
     String getContentPage(ModelMap modelMap) {
         modelMap.addAttribute("content", "content");
         logger.info("content fragment called ::::::::::::::::::::::::");
