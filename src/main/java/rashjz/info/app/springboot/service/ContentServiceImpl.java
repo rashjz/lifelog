@@ -1,7 +1,10 @@
 package rashjz.info.app.springboot.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import rashjz.info.app.springboot.model.Content;
 import rashjz.info.app.springboot.repository.ContentRepository;
 import rashjz.info.app.springboot.repository.ContentTypeRepository;
@@ -20,17 +23,12 @@ public class ContentServiceImpl implements ContentService {
 
     @Override
     public void saveContent(Content content) {
-
+        contentRepository.save(content);
     }
 
     @Override
     public Content findById(Long id) {
         return contentRepository.findOne(id.intValue());
-    }
-
-    @Override
-    public Content findByTitle(String title) {
-        return contentRepository.findByTitle(title);
     }
 
     @Override
@@ -43,10 +41,11 @@ public class ContentServiceImpl implements ContentService {
         contentRepository.delete(id.intValue());
     }
 
+    @Transactional(readOnly = true)
     @Override
-    public List<Content> findAllContents() {
-        return contentRepository.findAll();
+    public Page<Content> findByTitleLike(String searchTerm, Pageable pageRequest) {
+        Page<Content> searchResultPage = contentRepository.findByTitleLike(searchTerm, pageRequest);
+        return searchResultPage;
     }
-
 
 }
