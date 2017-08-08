@@ -9,10 +9,11 @@ angular.module('taskManagerApp').factory('ContentService', function ($http) {
         return factory;
 
 
-        function getAllPosts() {
+        function getAllPosts(searchTerm,page,size) {
 
-            return   $http.get("/api/contents/").then(
+            return   $http.get('/api/contents?searchTerm='+searchTerm+'&page='+page+'&size='+size).then(
                 function (response) {
+                    console.log("--------------"+searchTerm+" "+page+" "+size);
                     posts = response.data;
                     return posts;
                 },

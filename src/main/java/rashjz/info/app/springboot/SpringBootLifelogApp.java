@@ -4,6 +4,9 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import rashjz.info.app.springboot.model.Content;
 import rashjz.info.app.springboot.model.ContentType;
 import rashjz.info.app.springboot.repository.ContentRepository;
@@ -23,6 +26,10 @@ public class SpringBootLifelogApp {
     CommandLineRunner runner(ContentRepository contentRepository,
                              ContentTypeRepository contentTypeRepository) {
         return arg -> {
+//            Page<Content> contents = contentRepository.findByTitleLike("%",  new PageRequest(0, 10, null));
+//
+//            System.out.println(contents.getContent()+"////////////////////////////////////////");
+
         /*	ContentType contentType =new ContentType();
             contentType.setName("Məqalə");
 			contentType.setStatus("a");

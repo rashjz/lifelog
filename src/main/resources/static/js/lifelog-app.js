@@ -16,7 +16,7 @@
 //     });
 
 
-var app = angular.module('taskManagerApp', ['ngRoute']).config(function ($routeProvider, $locationProvider, $httpProvider) {
+var app = angular.module('taskManagerApp', ['ngRoute','ui.bootstrap']).config(function ($routeProvider, $locationProvider, $httpProvider) {
     $routeProvider
         .when("/",
             {

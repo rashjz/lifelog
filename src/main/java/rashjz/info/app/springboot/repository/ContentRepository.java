@@ -1,14 +1,13 @@
 package rashjz.info.app.springboot.repository;
 
-import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.rest.core.annotation.RepositoryRestResource;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.stereotype.Repository;
 import rashjz.info.app.springboot.model.Content;
-import rashjz.info.app.springboot.model.Role;
 
 @Repository
-public interface ContentRepository extends JpaRepository<Content, Integer> {
+public interface ContentRepository extends PagingAndSortingRepository<Content, Integer> {
 
-    Content findByTitle(String title);
-
+    Page<Content> findByTitleLike(String title, Pageable pageable);
 }

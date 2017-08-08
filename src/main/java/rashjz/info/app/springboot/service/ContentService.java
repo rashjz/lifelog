@@ -1,5 +1,7 @@
 package rashjz.info.app.springboot.service;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import rashjz.info.app.springboot.model.Content;
 
 
@@ -11,12 +13,10 @@ public interface ContentService {
 
     Content findById(Long id);
 
-    Content findByTitle(String title);
-
     void updateContent(Content content);
 
     void deleteContentById(Long id);
 
-    List<Content> findAllContents();
+    public Page<Content> findByTitleLike(String searchTerm, Pageable pageRequest);
 
 }
