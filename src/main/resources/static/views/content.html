@@ -20,15 +20,16 @@
                                 <div class="list-group-item">
                                     <div class="row-content">
                                         <div class="list-group-item-heading">
-                                            <a href="#" title="sintret">
+                                            <a href="#" title="">
                                                 <h5>{{post.title}} </h5>
-                                            </a> by {{post.author}}
+                                            </a>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                             <h6><a href="#">Post type :  {{post.contentType.name}} </a> <span>Date : {{ post.insertDate | date:'MM/dd/yyyy' }}</span>
                             </h6>
+                            <p>Written by {{post.author}}</p>
                             <p>{{post.description}}</p>
                         </div>
                     </div>
@@ -38,7 +39,11 @@
 
             </div>
 
-            <uib-pagination total-items="{{totalItems}}" ng-model="{{pageNumb}}" items-per-page="{{pagesize}}"></uib-pagination>
+            <ul uib-pagination total-items="totalItems"
+                ng-model="currentPage" items-per-page="itemsPerPage"
+                max-size="7" rotate="false" previous-text="&lsaquo;" next-text="&rsaquo;"
+                first-text="&laquo;" last-text="&raquo;"/>
+
 
 
         </div>

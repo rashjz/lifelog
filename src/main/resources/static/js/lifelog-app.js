@@ -1,22 +1,4 @@
-// var token = $("meta[name='_csrf']").attr("content");
-// var header = $("meta[name='_csrf_header']").attr("content");
-// angular.module('taskManagerApp').factory('XSRFInterceptor', function ($cookies, $log) {
-//         var XSRFInterceptor = {
-//             request: function (config) {
-//                 var token = $cookies.get('XSRF-TOKEN');
-//
-//                 if (token) {
-//                     config.headers['X-XSRF-TOKEN'] = token;
-//                     $log.info("X-XSRF-TOKEN: " + token);
-//                 }
-//                 return config;
-//             }
-//         };
-//         return XSRFInterceptor;
-//     });
-
-
-var app = angular.module('taskManagerApp', ['ngRoute','ui.bootstrap']).config(function ($routeProvider, $locationProvider, $httpProvider) {
+var app = angular.module('taskManagerApp', ['ngResource','ui.bootstrap','ngRoute']).config(function ($routeProvider, $locationProvider, $httpProvider) {
     $routeProvider
         .when("/",
             {
@@ -38,9 +20,6 @@ var app = angular.module('taskManagerApp', ['ngRoute','ui.bootstrap']).config(fu
             templateUrl: "/"
         });
     $locationProvider.hashPrefix('');
-
-    // $httpProvider.defaults.withCredentials = true;
-    // $httpProvider.interceptors.push('XSRFInterceptor');
 
 });
 

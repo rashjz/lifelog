@@ -27,14 +27,15 @@
         <bootstrap.version>3.3.7</bootstrap.version>
         <jquery.version>3.2.1</jquery.version>
         <font.awesome.version>4.7.0</font.awesome.version>
+        <angular.ui.bootstrap.version>2.5.0</angular.ui.bootstrap.version>
     </properties>
 
     <dependencies>
-        <dependency>
-            <groupId>org.webjars</groupId>
-            <artifactId>angular-ui-bootstrap</artifactId>
-            <version>2.2.0</version>
-        </dependency>
+        <!--<dependency>-->
+            <!--<groupId>org.webjars</groupId>-->
+            <!--<artifactId>angular-ui-bootstrap</artifactId>-->
+            <!--<version>${angular.ui.bootstrap.version}</version>-->
+        <!--</dependency>-->
         <dependency>
             <groupId>org.webjars</groupId>
             <artifactId>jquery</artifactId>
