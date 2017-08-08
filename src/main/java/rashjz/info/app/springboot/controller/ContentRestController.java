@@ -3,11 +3,13 @@ package rashjz.info.app.springboot.controller;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import rashjz.info.app.springboot.model.Content;
 import rashjz.info.app.springboot.model.User;
 import rashjz.info.app.springboot.service.ContentService;
@@ -16,7 +18,7 @@ import rashjz.info.app.springboot.service.UserService;
 import java.util.List;
 
 /**
- * Created by rasha_000 on 8/7/2017.
+ * Created by Rashad Javadov on 8/7/2017.
  */
 @RestController
 @RequestMapping("/api")
@@ -28,13 +30,24 @@ public class ContentRestController {
     ContentService contentService;
 
 
-    @GetMapping(value = "/contents/")
-    public ResponseEntity<List<Content>> listAllContents() {
-        List<Content> contents = contentService.findAllContents();
-        if (contents.isEmpty()) {
-            return new ResponseEntity(HttpStatus.NO_CONTENT);
-            // You many decide to return HttpStatus.NOT_FOUND
-        }
-        return new ResponseEntity<List<Content>>(contents, HttpStatus.OK);
+    @GetMapping(value = "/contents")
+    public @ResponseBody
+    List<Content> listAllContents(@RequestParam("searchTerm") String searchTerm,
+                                  @RequestParam("page") Integer page,
+                                  @RequestParam("size") Integer size) {
+        logger.info("searchTerm ::::: " + searchTerm + " page ::::: " + page + " size ::::: " + size);
+        Pageable pageable = new PageRequest(page, size, null);
+        Page<Content> contents = contentService.findByTitleLike(searchTerm, pageable);
+        logger.info(" getTotalElements : " + contents.getTotalElements() + " TotalPag : " + contents.getTotalPages() + "-----------------" + contents.getContent().size());
+        return contents.getContent();
+    }
+
+
+    @GetMapping(value = "/test/")
+    public @ResponseBody
+    Pageable getTestMethod() {
+        Pageable pageable = new PageRequest(0, 10, null);
+        // new Sort(Sort.Direction.DESC, "description").and(new Sort(Sort.Direction.ASC, "title"))
+        return pageable;
     }
 }
