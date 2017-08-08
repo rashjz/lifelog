@@ -3,8 +3,12 @@
     <div class="container">
         <div ng-controller="ContentController" style="margin-top: 7%;">
 
+            <input style="width: 20%" type="text" ng-model="searchTerm" ng-change="change(text)"
+                   placeholder="Search by Title"
+                   class="form-control" id="titlefilter">
 
-            <div ng-repeat="post in posts">
+
+            <div style="margin-top: 2%;" ng-repeat="post in posts">
 
 
                 <div class="row">
@@ -27,7 +31,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <h6><a href="#">Post type :  {{post.contentType.name}} </a> <span>Date : {{ post.insertDate | date:'MM/dd/yyyy' }}</span>
+                            <h6><a href="#">Post type : {{post.contentType.name}} </a> <span>Date : {{ post.insertDate | date:'MM/dd/yyyy' }}</span>
                             </h6>
                             <p>Written by {{post.author}}</p>
                             <p>{{post.description}}</p>
@@ -43,7 +47,6 @@
                 ng-model="currentPage" items-per-page="itemsPerPage"
                 max-size="7" rotate="false" previous-text="&lsaquo;" next-text="&rsaquo;"
                 first-text="&laquo;" last-text="&raquo;"/>
-
 
 
         </div>

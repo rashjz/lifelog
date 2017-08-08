@@ -38,11 +38,13 @@ public class ContentRestController {
         //http://localhost:8080/api/contents?searchTerm=&page=0&size=10
         logger.info("searchTerm ::::: " + searchTerm + " page ::::: " + page + " size ::::: " + size);
         Pageable pageable = new PageRequest(page, size, null);
-        if (String.valueOf(searchTerm).isEmpty()){
-            searchTerm="%";
+        if (String.valueOf(searchTerm).isEmpty()) {
+            searchTerm = "%";
+        }else {
+            searchTerm=searchTerm+"%";
         }
         Page<Content> contents = contentService.findByTitleLike(searchTerm, pageable);
-        logger.info(" getTotalElements : " + contents.getTotalElements() + " TotalPag : " + contents.getTotalPages() + "-----------------" + contents.getContent().size());
+        logger.info(searchTerm + " getTotalElements : " + contents.getTotalElements() + " TotalPag : " + contents.getTotalPages() + "-----------------" + contents.getContent().size());
         return contents;
     }
 

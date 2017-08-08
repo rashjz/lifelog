@@ -5,6 +5,16 @@ angular.module('taskManagerApp').controller('ContentController',
         $scope.currentPage = 1;
         $scope.itemsPerPage = 3;
 
+
+        $scope.change = function(text) {
+
+            // $http.get('http://website/getdatafunction/' + valtosend).then(function(result){
+            //     $scope.entries = result.data;
+            // });
+            getAllPosts()
+        };
+
+
         function getAllPosts() {
             ContentService.getAllPosts($scope.searchTerm, $scope.currentPage - 1, $scope.itemsPerPage).then(
                 function (response) {
