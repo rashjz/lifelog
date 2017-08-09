@@ -6,9 +6,15 @@ angular.module('taskManagerApp').controller('ContentController',
         $scope.currentPage = 1;
         $scope.itemsPerPage = 3;
         $scope.content = {};
+        $scope.contentType = {};
 
         $scope.change = function (text) {
             getAllPosts()
+        };
+
+        $scope.getContentType = function (contentType) {
+            console.log(contentType);
+            // alert(JSON.stringify(contentType));
         };
 
         getAllContentTypes();
@@ -46,9 +52,9 @@ angular.module('taskManagerApp').controller('ContentController',
         }
 
         $scope.editContent = function editContent() {
-            console.log('console edit content ' + JSON.stringify($scope.content));
+            console.log('console edit content ' + JSON.stringify($scope.contentType));
             // alert('selected : ' + JSON.stringify($scope.content));
-            addNewContent();
+            // addNewContent();
         }
 
 

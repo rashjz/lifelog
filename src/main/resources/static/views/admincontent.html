@@ -1,95 +1,124 @@
 <div th:fragment="admincontent">
 
-    <div class="container">
+    <div style="font-weight: bold;" class="container">
         <div ng-controller="ContentController" style="margin-top: 7%;">
 
 
-            <div style="margin-top: 2%;width: 50%" class="panel-primary">
-                <div class="panel-heading">
-                    <span class="panel-title">Content Edit</span>
+            <div class="row">
+                <div class="col-xs-6">
+
+
+                    <div style="margin-top: 2px;" class="panel-primary">
+                        <div class="panel-heading">
+                            <span class="panel-title">Content Edit</span>
+                        </div>
+
+                        <div class="panel-body">
+                            <div class="col-sm-9">
+                                <label class="label">Title</label>
+                                <input type="text" class="form-control" placeholder="Title" ng-model="content.title"/>
+                            </div>
+                            <div class="col-sm-9">
+                                <label class="label">Description</label>
+                                <textarea type="text" class="form-control" ng-model="content.description"/>
+                            </div>
+                            <div class="col-sm-9">
+                                <label class="label">Author</label>
+                                <input type="text" class="form-control" placeholder="Author" ng-model="content.author"/>
+                            </div>
+                            <div class="col-sm-9">
+                                <label class="label">Type</label>
+                                <!--<select ng-model="content.contentType" class="form-control">-->
+                                <!--<option value="">&#45;&#45; Select &#45;&#45;</option>-->
+                                <!--<option ng-repeat="contentType in contentTypes" value="{{contentType}}">-->
+                                <!--{{contentType.name}}-->
+                                <!--</option>-->
+                                <!--</select>-->
+                                <select class="form-control"
+                                        data-ng-options="o as o.name for o in contentTypes track by o.id"
+                                        data-ng-model="contentType"></select>
+                            </div>
+                            <div class="col-sm-9">
+                                <label class="label">Status</label>
+                                <input type="text" class="form-control" placeholder="Status" ng-model="content.status"/>
+                            </div>
+
+
+
+                        </div>
+                        <button ng-click="editContent()" class="btn-panel-big">Save</button>
+                    </div>
+
+
                 </div>
 
-                <div class="panel-body">
-                    <div class="col-sm-9">
-                        <label class="label">Title</label>
-                        <input type="text" class="form-control" placeholder="Title" ng-model="content.title"/>
+                <div class="col-xs-6">
+                    <div style="margin-top: 2px;" class="panel-primary">
+                        <div class="panel-heading">
+                            <span class="panel-title">Content Edit</span>
+                        </div>
+                        <div class="panel-body">
+                            <img src="https://scontent-waw1-1.xx.fbcdn.net/v/t1.0-1/p50x50/14606444_1261397237308362_1650890108239911445_n.png?oh=a96706abda64d6f8efb0585a9d5e021a&oe=59F24560"/>
+                        </div>
                     </div>
-                    <div class="col-sm-9">
-                        <label class="label">Description</label>
-                        <textarea type="text" class="form-control" ng-model="content.description"/>
-                    </div>
-                    <div class="col-sm-9">
-                        <label class="label">Author</label>
-                        <input type="text" class="form-control" placeholder="Author" ng-model="content.author"/>
-                    </div>
-                    <div class="col-sm-9">
-                        <!--<select ng-model="content.contentType" class="form-control"-->
-                        <!--ng-options="contentType as contentType in contentTypes">-->
-                        <!--<option value="">&#45;&#45; Select &#45;&#45;</option>-->
-                        <!--</select>-->
-                    </div>
-                    <div class="col-sm-9">
-                        <label class="label">Status</label>
-                        <input type="text" class="form-control" placeholder="Status" ng-model="content.status"/>
-                    </div>
-                </div>
-                <button ng-click="editContent()" class="btn-panel-big">Save</button>
-            </div>
-
-            </hr>
-
-            <div style="width: 20%;margin-top: 7%;" class="input-group">
-                <input class="form-control" ng-model="searchTerm" ng-change="change(text)" placeholder="Search by Title"
-                       type="search"/>
-                <span class="input-group-addon"><span class="glyphicon glyphicon-search"></span></span>
-            </div>
 
 
-            <div style="margin-top: 2%" class="panel-primary">
-                <div class="panel-heading">
-                    <span class="panel-title">Content List</span>
-                </div>
-                <div class="panel-body">
-                    <table class="table">
-                        <thead>
-                        <tr>
-                            <th>#</th>
-                            <th>title</th>
-                            <th>insertDate</th>
-                            <th>author</th>
-                            <th>contentType</th>
-                            <th>status</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <tr style="cursor:pointer;" ng-repeat="post in posts" ng-click="selectRow(post)">
-                            <td>{{post.id}}</td>
-                            <td>{{post.title}}</td>
-                            <td>{{ post.insertDate | date:'MM/dd/yyyy' }}</td>
-                            <td>{{post.author}}</td>
-                            <td>{{post.contentType.name}}</td>
-                            <td>
-                                <font ng-if="post.status=='a'" style="color: green;font-weight: bold;">Active</font>
-                                <font ng-if="post.status=='d'" style="color: red;font-weight: bold;">Deactive</font>
-                            </td>
-                        </tr>
-                        </tbody>
-                    </table>
                 </div>
             </div>
 
+            <div class="row">
 
-            <ul uib-pagination total-items="totalItems"
-                ng-model="currentPage" items-per-page="itemsPerPage"
-                max-size="7" rotate="false" previous-text="&lsaquo;" next-text="&rsaquo;"
-                first-text="&laquo;" last-text="&raquo;"></ul>
+                </hr>
 
+                <div style="margin-top: 2px" class="panel-primary">
+                    <div class="panel-heading">
+                        <!--<span class="panel-title">Content List</span>-->
+                        <div style="width: 25%;margin-left: 20px;" class="input-group">
+                            <input class="form-control" ng-model="searchTerm" ng-change="change(text)"
+                                   placeholder="Search by Title"
+                                   type="search"/>
+                            <span class="input-group-addon"><span class="glyphicon glyphicon-search"></span></span>
+                        </div>
+                    </div>
+                    <div class="panel-body">
+                        <table class="table">
+                            <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>title</th>
+                                <th>insertDate</th>
+                                <th>author</th>
+                                <th>contentType</th>
+                                <th>status</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr style="cursor:pointer;" ng-repeat="post in posts" ng-click="selectRow(post)">
+                                <td>{{post.id}}</td>
+                                <td>{{post.title}}</td>
+                                <td>{{ post.insertDate | date:'MM/dd/yyyy' }}</td>
+                                <td>{{post.author}}</td>
+                                <td>{{post.contentType.name}}</td>
+                                <td>
+                                    <font ng-if="post.status=='a'"
+                                          style="color: green;font-weight: bold;">Active</font>
+                                    <font ng-if="post.status=='d'"
+                                          style="color: red;font-weight: bold;">Deactive</font>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+
+                <ul uib-pagination total-items="totalItems"
+                    ng-model="currentPage" items-per-page="itemsPerPage"
+                    max-size="7" rotate="false" previous-text="&lsaquo;" next-text="&rsaquo;"
+                    first-text="&laquo;" last-text="&raquo;"></ul>
+
+            </div>
+            <script type="text/javascript" src="../js/ContentService.js"></script>
+            <script type="text/javascript" src="../js/ContentController.js"></script>
 
         </div>
-    </div>
-
-
-    <script type="text/javascript" src="../js/ContentService.js"></script>
-    <script type="text/javascript" src="../js/ContentController.js"></script>
-
-</div>

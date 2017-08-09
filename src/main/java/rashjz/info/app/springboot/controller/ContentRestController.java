@@ -56,9 +56,9 @@ public class ContentRestController {
     @PostMapping(value = "/contentadd/")
     public @ResponseBody
     Content addContent(@RequestBody Content content) {
-        logger.info("xxxxxxxxxxxxxxx ", content.toString());
-        content.setAuthor("rashad Javaaaaaaaaaaaaaa");
-        contentService.saveContent(content);
+        logger.info("xxxxxxxxxxxxxxx "+ content.toString());
+        content.setAuthor("rashad Javaaaaaaaaaaaaaaa");
+//        contentService.saveContent(content);
         return content;
     }
 
