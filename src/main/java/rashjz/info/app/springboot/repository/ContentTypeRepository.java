@@ -7,7 +7,7 @@ import rashjz.info.app.springboot.model.ContentType;
 
 import javax.persistence.criteria.CriteriaBuilder;
 
-@Repository
+@RepositoryRestResource
 public interface ContentTypeRepository extends JpaRepository<ContentType, Integer> {
 
 }

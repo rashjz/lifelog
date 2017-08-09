@@ -31,5 +31,10 @@ public class NavigationController {
         logger.info("content fragment called ::::::::::::::::::::::::");
         return "index";
     }
-
+    @GetMapping("/admincontent")
+    String getAdminContentPage(ModelMap modelMap) {
+        modelMap.addAttribute("content", "admincontent");
+        logger.info("admin content fragment called ::::::::::::::::::::::::");
+        return "index";
+    }
 }

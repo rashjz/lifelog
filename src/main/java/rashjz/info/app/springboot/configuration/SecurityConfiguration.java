@@ -53,6 +53,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 				.antMatchers("/").permitAll()
 				.antMatchers("/login").permitAll()
 				.antMatchers("/content").permitAll()
+				.antMatchers("/admincontent").permitAll()
 				.antMatchers("/api/**").permitAll()
 				.antMatchers("/task").permitAll()
 				.antMatchers("/index").permitAll()
@@ -77,7 +78,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 	public void configure(WebSecurity web) throws Exception {
 	    web
 	       .ignoring()
-	       .antMatchers("/resources/**", "/uploads/**","/static/**", "/css/**", "/js/**", "/images/**","/webjars/**","/tasks/**");
+	       .antMatchers("/resources/**", "/uploads/**","/static/**", "/css/**", "/js/**", "/images/**","/webjars/**","/tasks/**","/contentTypes/**");
 	}
 
 

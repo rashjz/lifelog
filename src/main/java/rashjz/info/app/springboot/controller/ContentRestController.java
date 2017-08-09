@@ -7,13 +7,17 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.util.UriComponentsBuilder;
 import rashjz.info.app.springboot.model.Content;
+import rashjz.info.app.springboot.model.ContentType;
 import rashjz.info.app.springboot.model.User;
 import rashjz.info.app.springboot.service.ContentService;
 import rashjz.info.app.springboot.service.UserService;
+import rashjz.info.app.springboot.utils.CustomErrorType;
 
 import java.util.List;
 
@@ -40,12 +44,22 @@ public class ContentRestController {
         Pageable pageable = new PageRequest(page, size, null);
         if (String.valueOf(searchTerm).isEmpty()) {
             searchTerm = "%";
-        }else {
-            searchTerm=searchTerm+"%";
+        } else {
+            searchTerm = searchTerm + "%";
         }
         Page<Content> contents = contentService.findByTitleLike(searchTerm, pageable);
         logger.info(searchTerm + " getTotalElements : " + contents.getTotalElements() + " TotalPag : " + contents.getTotalPages() + "-----------------" + contents.getContent().size());
         return contents;
+    }
+
+
+    @PostMapping(value = "/contentadd/")
+    public @ResponseBody
+    Content addContent(@RequestBody Content content) {
+        logger.info("xxxxxxxxxxxxxxx ", content.toString());
+        content.setAuthor("rashad Javaaaaaaaaaaaaaa");
+        contentService.saveContent(content);
+        return content;
     }
 
 

@@ -30,7 +30,7 @@ angular.module('taskManagerApp').controller('UserController',
                 console.log($scope.rowIndex + "index");
             }
 
-        }
+        };
         self.submit = submit;
         // self.getAllUsers = getAllUsers;
         self.createUser = createUser;
