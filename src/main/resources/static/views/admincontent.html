@@ -1,14 +1,14 @@
 <div th:fragment="admincontent">
 
     <div style="font-weight: bold;" class="container">
-        <div ng-controller="ContentController" style="margin-top: 7%;">
+        <div ng-controller="ContentController" style="margin-top: 6%;">
 
 
             <div class="row">
                 <div class="col-xs-6">
 
 
-                    <div style="margin-top: 2px;" class="panel-primary">
+                    <div class="panel-primary">
                         <div class="panel-heading">
                             <span class="panel-title">Content Edit</span>
                         </div>
@@ -18,17 +18,20 @@
                             <div class="col-sm-9">
                                 <div class="form-group"> <!-- Date input -->
                                     <label class="control-label" for="date">Date</label>
-                                    <input class="form-control" id="date" name="date" placeholder="MM/DD/YYY" ng-model="content.insertDate" type="text"/>
+                                    <input class="form-control" id="date" name="date" placeholder="YYYY/MM/DD"
+                                           ng-model="content.insertDate" type="text"/>
                                 </div>
                             </div>
 
                             <div class="col-sm-9">
                                 <label class="control-label" for="title">Title</label>
-                                <input type="text" class="form-control" name="title" id="title" placeholder="Title" ng-model="content.title"/>
+                                <input type="text" class="form-control" name="title" id="title" placeholder="Title"
+                                       ng-model="content.title"/>
                             </div>
                             <div class="col-sm-9">
                                 <label class="control-label" for="desc">Description</label>
-                                <textarea type="text" class="form-control" name="desc" id="desc"  ng-model="content.description"/>
+                                <textarea type="text" class="form-control" name="desc" id="desc"
+                                          ng-model="content.description"/>
                             </div>
                             <div class="col-sm-9">
                                 <label class="label">Author</label>
@@ -36,15 +39,9 @@
                             </div>
                             <div class="col-sm-9">
                                 <label class="label">Type</label>
-                                <!--<select ng-model="content.contentType" class="form-control">-->
-                                <!--<option value="">&#45;&#45; Select &#45;&#45;</option>-->
-                                <!--<option ng-repeat="contentType in contentTypes" value="{{contentType}}">-->
-                                <!--{{contentType.name}}-->
-                                <!--</option>-->
-                                <!--</select>-->
-                                <select class="form-control"
-                                        data-ng-options="o as o.name for o in contentTypes track by o.id"
-                                        data-ng-model="contentType"></select>
+                                <select class="form-control" data-ng-model="content.contentType">
+                                    <option ng-repeat="type in contentTypes" value="{{type}}">{{type.name}}</option>
+                                </select>
                             </div>
                             <div class="col-sm-9">
                                 <label class="label">Status</label>
@@ -75,9 +72,7 @@
 
             <div class="row">
 
-                </hr>
-
-                <div style="margin-top: 2px" class="panel-primary">
+                <div class="panel-primary">
                     <div class="panel-heading">
                         <!--<span class="panel-title">Content List</span>-->
                         <div style="width: 25%;margin-left: 20px;" class="input-group">
@@ -125,22 +120,24 @@
                     first-text="&laquo;" last-text="&raquo;"></ul>
 
             </div>
-            <script type="text/javascript">
-                $(function () {
-                    $("#date").datepicker({
-                        format: 'yyyy-mm-dd',
-                        autoclose: true,
-                        todayBtn: false,
-                        startDate: "01/01/2016"
-                    });
-                });
-            </script>
-
-
-            <!--<script type="application/javascript" src="../js/angular-datepicker.js"></script>-->
-            <!--charset="UTF-8"></script>-->
-
-            <script type="text/javascript" src="../js/ContentService.js"></script>
-            <script type="text/javascript" src="../js/ContentController.js"></script>
 
         </div>
+    </div>
+
+
+    <script type="text/javascript">
+        $(function () {
+            $("#date").datepicker({
+                format: 'yyyy-mm-dd',
+                autoclose: true,
+                todayBtn: false,
+                startDate: "01/01/2016"
+            });
+        });
+    </script>
+
+
+    <script type="text/javascript" src="../js/ContentService.js"></script>
+    <script type="text/javascript" src="../js/ContentController.js"></script>
+
+</div>
