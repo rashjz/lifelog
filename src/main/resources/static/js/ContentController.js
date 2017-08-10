@@ -8,6 +8,12 @@ angular.module('taskManagerApp').controller('ContentController',
         $scope.content = {};
         $scope.contentType = {};
 
+
+
+        $scope.$watch('content.insertDate',function(val){
+            console.log(val)
+        })
+
         $scope.change = function (text) {
             getAllPosts()
         };

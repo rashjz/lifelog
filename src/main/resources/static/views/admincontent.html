@@ -14,13 +14,21 @@
                         </div>
 
                         <div class="panel-body">
+
                             <div class="col-sm-9">
-                                <label class="label">Title</label>
-                                <input type="text" class="form-control" placeholder="Title" ng-model="content.title"/>
+                                <div class="form-group"> <!-- Date input -->
+                                    <label class="control-label" for="date">Date</label>
+                                    <input class="form-control" id="date" name="date" placeholder="MM/DD/YYY" ng-model="content.insertDate" type="text"/>
+                                </div>
+                            </div>
+
+                            <div class="col-sm-9">
+                                <label class="control-label" for="title">Title</label>
+                                <input type="text" class="form-control" name="title" id="title" placeholder="Title" ng-model="content.title"/>
                             </div>
                             <div class="col-sm-9">
-                                <label class="label">Description</label>
-                                <textarea type="text" class="form-control" ng-model="content.description"/>
+                                <label class="control-label" for="desc">Description</label>
+                                <textarea type="text" class="form-control" name="desc" id="desc"  ng-model="content.description"/>
                             </div>
                             <div class="col-sm-9">
                                 <label class="label">Author</label>
@@ -42,7 +50,6 @@
                                 <label class="label">Status</label>
                                 <input type="text" class="form-control" placeholder="Status" ng-model="content.status"/>
                             </div>
-
 
 
                         </div>
@@ -118,6 +125,21 @@
                     first-text="&laquo;" last-text="&raquo;"></ul>
 
             </div>
+            <script type="text/javascript">
+                $(function () {
+                    $("#date").datepicker({
+                        format: 'yyyy-mm-dd',
+                        autoclose: true,
+                        todayBtn: false,
+                        startDate: "01/01/2016"
+                    });
+                });
+            </script>
+
+
+            <!--<script type="application/javascript" src="../js/angular-datepicker.js"></script>-->
+            <!--charset="UTF-8"></script>-->
+
             <script type="text/javascript" src="../js/ContentService.js"></script>
             <script type="text/javascript" src="../js/ContentController.js"></script>
 
