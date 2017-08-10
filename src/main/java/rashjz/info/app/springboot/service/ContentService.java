@@ -13,8 +13,6 @@ public interface ContentService {
 
     Content findById(Long id);
 
-    void updateContent(Content content);
-
     void deleteContentById(Long id);
 
     public Page<Content> findByTitleLike(String searchTerm, Pageable pageRequest);

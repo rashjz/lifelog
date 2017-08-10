@@ -31,10 +31,7 @@ public class ContentServiceImpl implements ContentService {
         return contentRepository.findOne(id.intValue());
     }
 
-    @Override
-    public void updateContent(Content content) {
-        contentRepository.save(content);
-    }
+
 
     @Override
     public void deleteContentById(Long id) {
