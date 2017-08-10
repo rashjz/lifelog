@@ -58,7 +58,7 @@ public class ContentRestController {
     Content addContent(@RequestBody Content content) {
         logger.info("xxxxxxxxxxxxxxx "+ content.toString());
         content.setAuthor("rashad Javaaaaaaaaaaaaaaa");
-//        contentService.saveContent(content);
+        contentService.saveContent(content);
         return content;
     }
 
