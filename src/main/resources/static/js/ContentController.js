@@ -12,11 +12,7 @@ angular.module('taskManagerApp').controller('ContentController',
         //     console.log(val)
         // });
         // getAllContentTypes();
-        // $scope.editContent = function editContent() {
-        //     console.log('console edit content ' + JSON.stringify($scope.content.contentType));
-        //     // alert('selected : ' + JSON.stringify($scope.content));
-        //     addNewContent();
-        // };
+
         $scope.change = function (text) {
             getAllPosts()
         };
