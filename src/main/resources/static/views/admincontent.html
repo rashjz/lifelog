@@ -39,8 +39,7 @@
                             </div>
                             <div class="col-sm-9">
                                 <label class="label">Type</label>
-                                <select class="form-control" data-ng-options="o as o.name for o in contentTypes" data-ng-model="content.contentType">
-                                    <!--<option ng-repeat="type in contentTypes" value="{{type}}">{{type.name}}</option>-->
+                                <select class="form-control" data-ng-options="o.name for o in contentTypes track by o.id" data-ng-model="content.contentType">
                                 </select>
                             </div>
                             <div class="col-sm-9">
