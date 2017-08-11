@@ -6,7 +6,8 @@ angular.module('taskManagerApp').factory('ContentService', function ($http) {
         var factory = {
             getAllPosts: getAllPosts,
             loadContentTypes: loadContentTypes,
-            addNewContent: addNewContent
+            updateContent: updateContent,
+            deleteContent: deleteContent
         };
 
         return factory;
@@ -40,18 +41,30 @@ angular.module('taskManagerApp').factory('ContentService', function ($http) {
             );
         }
 
-    function addNewContent(content) {
+        function updateContent(content) {
 
-        return $http.post('/api/contentadd/',content).then(
-            function (response) {
-                console.log("--------------" + response);
-                return response;
-            },
-            function (errResponse) {
-                console.error('Error while loading posts' + errResponse);
-            }
-        );
-    }
+            return $http.post('/api/contentupdate/', content).then(
+                function (response) {
+                    console.log("--------------" + response);
+                    return response;
+                },
+                function (errResponse) {
+                    console.error('Error while loading posts' + errResponse);
+                }
+            );
+        }
+
+        function deleteContent(id) {
+            return $http.delete('/api/contentdelete/'+ id).then(
+                function (response) {
+                    console.log('response delete content :::: '+response);
+                    return response;
+                },
+                function (errResponse) {
+                    console.error('Error while loading posts' + errResponse);
+                }
+            );
+        }
 
     }
 );

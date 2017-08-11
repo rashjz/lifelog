@@ -16,9 +16,11 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.util.UriComponentsBuilder;
 
+import rashjz.info.app.springboot.model.Content;
 import rashjz.info.app.springboot.model.User;
 import rashjz.info.app.springboot.service.UserService;
 import rashjz.info.app.springboot.utils.CustomErrorType;
+import rashjz.info.app.springboot.utils.StaticParams;
 
 @RestController
 @RequestMapping("/api")
@@ -116,22 +118,26 @@ public class UserRestController {
     }
 
     @PostMapping(value = "/upload/")
-    public ResponseEntity<String> doStuff(@RequestParam("file") MultipartFile file) {
+    public @ResponseBody Content doStuff(@RequestParam("file") MultipartFile file,
+                                     @RequestParam("id") String id) {
+        String fileName = "";
         //@RequestPart("json") @Valid MyDto dto,
-        logger.info("file :::::::::::::::: " + file.getName() + file.getOriginalFilename());
+        logger.info("file :::::::::::::::: " + file.getName() + file.getOriginalFilename() + " -----  " + id.toString());
 
         try {
             // Get the file and save it somewhere
             byte[] bytes = file.getBytes();
-            String fileName = UUID.randomUUID().toString() + "." + getExt(file.getOriginalFilename());
+            fileName = UUID.randomUUID().toString() + "." + getExt(file.getOriginalFilename());
 
-            Path path = Paths.get("D:\\" + fileName);
+            Path path = Paths.get(StaticParams.UPLOAD_LOCATION + fileName);
             Files.write(path, bytes);
         } catch (Exception e) {
             e.printStackTrace();
         }
+        Content content = new Content();
+        content.setImagePath("/uploads/"+fileName);
 
-        return new ResponseEntity<String>(HttpStatus.NO_CONTENT);
+        return content;
     }
 
     public static String getExt(String fileName) {

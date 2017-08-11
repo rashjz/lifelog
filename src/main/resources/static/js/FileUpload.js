@@ -6,9 +6,10 @@ angular.module('taskManagerApp').service('uploadService', function ($http, $q) {
         uploadFileToUrl: uploadFileToUrl
     });
 
-    function uploadFileToUrl(files) {
+    function uploadFileToUrl(files,id) {
         var formData = new FormData();
         formData.append('file', files[0]);
+        formData.append('id', id);
         console.log("uploadFileToUrl ==========  " + files[0].name)
 
         return $http({

@@ -1,5 +1,5 @@
 angular.module('taskManagerApp').controller('ContentController',
-    ['$scope', 'ContentService', function ($scope, ContentService) {
+    ['$scope', 'ContentService', 'uploadService', '$uibModal', function ($scope, ContentService, uploadService, $uibModal) {
 
         $scope.searchTerm = '';
         $scope.totalItems;
@@ -8,18 +8,19 @@ angular.module('taskManagerApp').controller('ContentController',
         $scope.content = {};
 
 
-
-        $scope.$watch('content.insertDate',function(val){
-            console.log(val)
-        });
-
+        // $scope.$watch('content.insertDate', function (val) {
+        //     console.log(val)
+        // });
+        // getAllContentTypes();
+        // $scope.editContent = function editContent() {
+        //     console.log('console edit content ' + JSON.stringify($scope.content.contentType));
+        //     // alert('selected : ' + JSON.stringify($scope.content));
+        //     addNewContent();
+        // };
         $scope.change = function (text) {
             getAllPosts()
         };
 
-
-
-        getAllContentTypes();
 
         function getAllPosts() {
             ContentService.getAllPosts($scope.searchTerm, $scope.currentPage - 1, $scope.itemsPerPage).then(
@@ -32,32 +33,54 @@ angular.module('taskManagerApp').controller('ContentController',
                 });
         }
 
-        function addNewContent() {
-            ContentService.addNewContent($scope.content).then(
+        $scope.editContent = function editContent() {
+            ContentService.updateContent($scope.content).then(
                 function (response) {
                     console.log('responseeeeeeeeeee ' + JSON.stringify(response));
                 }, function (error) {
                     console.log(error + " error  during service call")
                     $scope.posts = [];
                 });
-        }
+        };
 
         function getAllContentTypes() {
             ContentService.loadContentTypes().then(
                 function (response) {
                     $scope.contentTypes = response.data._embedded.contentTypes;
-                    console.log(JSON.stringify($scope.contentTypes) + '***************************');
+                    // console.log(JSON.stringify($scope.contentTypes) + '***************************');
                 }, function (error) {
                     console.log(error + " error  during service call")
                     $scope.contentTypes = [];
                 });
         }
 
-        $scope.editContent = function editContent() {
-            console.log('console edit content ' + JSON.stringify($scope.content.contentType));
-            // alert('selected : ' + JSON.stringify($scope.content));
-            addNewContent();
-        }
+
+        $scope.deleteContent = function deleteContent() {
+            if (JSON.stringify($scope.content) != '{}') {
+                $uibModal.open({
+                    templateUrl: 'modal.html',
+                    controller: 'ModalDialogController',
+                }).result.then(
+                    function (success) {
+                        // console.log("OK");
+                        ContentService.deleteContent($scope.content.id).then(
+                            function (response) {
+                                getAllPosts();
+                            }, function (error) {
+                                console.log(error + " error  during service call")
+                                $scope.contentTypes = [];
+                            });
+                    },
+                    function (error) {
+                        // console.log("cancel");
+                    }
+                );
+            }
+        };
+
+        $scope.newContent = function newContent() {
+            $scope.content = {};
+        };
 
 
         $scope.$watch("currentPage", function () {
@@ -72,6 +95,18 @@ angular.module('taskManagerApp').controller('ContentController',
 
         };
 
+
+        $scope.onFileSelect = function (files) {
+            console.log($scope.content.id);
+            uploadService.uploadFileToUrl(files, $scope.content.id).then(
+                function (response) {
+                    console.log(response.data.imagePath);
+                    $scope.content.imagePath = response.data.imagePath;
+                }, function (error) {
+                    console.log(error + " error  during service call")
+                    // $scope.users = [];
+                });
+        };
 
     }
     ]);

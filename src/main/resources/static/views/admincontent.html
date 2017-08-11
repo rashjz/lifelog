@@ -1,5 +1,20 @@
 <div th:fragment="admincontent">
 
+
+    <script type="text/ng-template" id="modal.html">
+        <div class="modal-header">
+            <h3 class="modal-title">Confirmation</h3>
+        </div>
+        <div class="modal-body">
+            Are you sure to Delete ?
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-primary" ng-click="ok()">OK</button>
+            <button class="btn btn-danger" ng-click="cancel()">Cancel</button>
+        </div>
+    </script>
+
+
     <div style="font-weight: bold;" class="container">
         <div ng-controller="ContentController" style="margin-top: 6%;">
 
@@ -8,7 +23,7 @@
                 <div class="col-xs-6">
 
 
-                    <div class="panel-primary">
+                    <div class="panel panel-primary">
                         <div class="panel-heading">
                             <span class="panel-title">Content Edit</span>
                         </div>
@@ -34,45 +49,60 @@
                                           ng-model="content.description"/>
                             </div>
                             <div class="col-sm-9">
-                                <label class="label">Author</label>
-                                <input type="text" class="form-control" placeholder="Author" ng-model="content.author"/>
+                                <label class="control-label" for="author">Author</label>
+                                <input type="text" id="author" name="author" class="form-control" placeholder="Author"
+                                       ng-model="content.author"/>
                             </div>
                             <div class="col-sm-9">
-                                <label class="label">Type</label>
-                                <select class="form-control" data-ng-options="o as o.name for o in contentTypes" data-ng-model="content.contentType">
+                                <label class="control-label" for="types">Type</label>
+                                <select class="form-control" id="types"
+                                        ng-options="o.name for o in contentTypes track by o.id"
+                                        ng-model="content.contentType">
                                     <!--<option ng-repeat="type in contentTypes" value="{{type}}">{{type.name}}</option>-->
                                 </select>
                             </div>
                             <div class="col-sm-9">
-                                <label class="label">Status</label>
-                                <input type="text" class="form-control" placeholder="Status" ng-model="content.status"/>
+                                <label class="control-label" for="status">Status</label>
+                                <input type="text" class="form-control" id="status" placeholder="Status"
+                                       ng-model="content.status"/>
                             </div>
 
+                            <div style="margin-top: 5px;" class="col-sm-9">
+                                <button ng-click="newContent()" class="btn btn-primary">New</button>
+                                <button ng-click="editContent()" class="btn btn-success">Save</button>
+                                <button ng-click="deleteContent()" class="btn btn-danger">Delete</button>
+
+                            </div>
 
                         </div>
-                        <button ng-click="editContent()" class="btn-panel-big">Save</button>
+
+
                     </div>
 
 
                 </div>
 
                 <div class="col-xs-6">
-                    <div style="margin-top: 2px;" class="panel-primary">
+                    <div style="margin-top: 2px;" class="panel panel-primary">
                         <div class="panel-heading">
                             <span class="panel-title">Content Edit</span>
                         </div>
                         <div class="panel-body">
-                            <img src="https://scontent-waw1-1.xx.fbcdn.net/v/t1.0-1/p50x50/14606444_1261397237308362_1650890108239911445_n.png?oh=a96706abda64d6f8efb0585a9d5e021a&oe=59F24560"/>
+                            <img class="img-responsive img-box img-thumbnail"
+                             ng-src="{{content.imagePath == null ? 'images/emtyimage.png' : content.imagePath}}"/>
+
+                            <label  class="btn btn-default btn-file">
+                                Browse <input ng-file-select="onFileSelect($files)" style="display: none;" type="file" />
+                            </label>
+
                         </div>
                     </div>
-
-
                 </div>
             </div>
 
-            <div class="row">
+            <div style="margin-top: 10px;" class="row">
 
-                <div class="panel-primary">
+                <div class="panel panel-primary">
                     <div class="panel-heading">
                         <!--<span class="panel-title">Content List</span>-->
                         <div style="width: 25%;margin-left: 20px;" class="input-group">
@@ -85,15 +115,16 @@
                     <div class="panel-body">
                         <table class="table">
                             <thead>
-                            <tr>
+                            <tr style="color: darkgreen;">
                                 <th>#</th>
-                                <th>title</th>
-                                <th>insertDate</th>
-                                <th>author</th>
-                                <th>contentType</th>
-                                <th>status</th>
+                                <th>TITLE</th>
+                                <th>ISERT DATE</th>
+                                <th>AUTHOR</th>
+                                <th>CONTENT TYPE</th>
+                                <th>STATUS</th>
                             </tr>
                             </thead>
+
                             <tbody>
                             <tr style="cursor:pointer;" ng-repeat="post in posts" ng-click="selectRow(post)">
                                 <td>{{post.id}}</td>
@@ -110,14 +141,15 @@
                             </tr>
                             </tbody>
                         </table>
+
+                        <ul uib-pagination total-items="totalItems"
+                            ng-model="currentPage" items-per-page="itemsPerPage"
+                            max-size="7" rotate="false" previous-text="&lsaquo;" next-text="&rsaquo;"
+                            first-text="&laquo;" last-text="&raquo;"></ul>
+
                     </div>
                 </div>
 
-
-                <ul uib-pagination total-items="totalItems"
-                    ng-model="currentPage" items-per-page="itemsPerPage"
-                    max-size="7" rotate="false" previous-text="&lsaquo;" next-text="&rsaquo;"
-                    first-text="&laquo;" last-text="&raquo;"></ul>
 
             </div>
 
@@ -135,9 +167,10 @@
             });
         });
     </script>
-
-
+    <script type="text/javascript" src="../js/FileUpload.js"></script>
+    <script type="text/javascript" src="../js/ModalController.js"></script>
     <script type="text/javascript" src="../js/ContentService.js"></script>
     <script type="text/javascript" src="../js/ContentController.js"></script>
 
 </div>
+

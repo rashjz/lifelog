@@ -24,6 +24,7 @@ var app = angular.module('taskManagerApp', ['ngResource','ui.bootstrap','ngRoute
 });
 
 
+
 app.constant('urls', {
     BASE: 'http://localhost:8080/',
     USER_SERVICE_API: 'http://localhost:8080/users/',

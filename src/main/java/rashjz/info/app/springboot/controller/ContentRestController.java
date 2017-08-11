@@ -19,6 +19,7 @@ import rashjz.info.app.springboot.service.ContentService;
 import rashjz.info.app.springboot.service.UserService;
 import rashjz.info.app.springboot.utils.CustomErrorType;
 
+import javax.websocket.server.PathParam;
 import java.util.List;
 
 /**
@@ -53,13 +54,16 @@ public class ContentRestController {
     }
 
 
-    @PostMapping(value = "/contentadd/")
+    @PostMapping(value = "/contentupdate/")
     public @ResponseBody
     Content addContent(@RequestBody Content content) {
-        logger.info("xxxxxxxxxxxxxxx "+ content.toString());
-        content.setAuthor("rashad Javaaaaaaaaaaaaaaa");
         contentService.saveContent(content);
         return content;
+    }
+
+    @DeleteMapping(value = "/contentdelete/{id}")
+    public void deleteContent(@PathVariable(value = "id") long  id) {
+        contentService.deleteContentById(Long.valueOf(id));
     }
 
 
