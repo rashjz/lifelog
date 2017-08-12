@@ -15,8 +15,10 @@
                     <div class="row">
                         <div class="col-xs-12 col-sm-3 col-md-3">
                             <a href="#">
-                                <img src="http://wanderluxe.theluxenomad.com/wp-content/uploads/2014/10/http-www.urchinbali.comgallery.jpg"
-                                     class="img-responsive img-box img-thumbnail">
+                                <!--<img src="http://wanderluxe.theluxenomad.com/wp-content/uploads/2014/10/http-www.urchinbali.comgallery.jpg"-->
+                                     <!--class="img-responsive img-box img-thumbnail">-->
+                                <img class="img-responsive img-box img-thumbnail"
+                                     ng-src="{{post.imagePath == null ? 'images/emtyimage.png' : post.imagePath}}"/>
                             </a>
                         </div>
                         <div class="col-xs-12 col-sm-9 col-md-9">
@@ -53,7 +55,7 @@
     </div>
 
     <!--</div>-->
-
+    <script type="text/javascript" src="../js/FileUpload.js"></script>
     <script type="text/javascript" src="../js/ContentService.js"></script>
     <script type="text/javascript" src="../js/ContentController.js"></script>
 

@@ -5,8 +5,9 @@
 
     <groupId>rashjz.info.app.springboot</groupId>
     <artifactId>lifelog</artifactId>
-    <version>1.0.0</version>
+    <version>1.0</version>
     <packaging>jar</packaging>
+    <!--<packaging>war</packaging>-->
 
     <name>lifelog</name>
     <description>Lifelog Application</description>
@@ -28,13 +29,15 @@
         <jquery.version>3.2.1</jquery.version>
         <font.awesome.version>4.7.0</font.awesome.version>
         <angular.ui.bootstrap.version>2.5.0</angular.ui.bootstrap.version>
+        <start-class>rashjz.info.app.springboot.SpringBootLifelogApp</start-class>
+
     </properties>
 
     <dependencies>
         <!--<dependency>-->
-            <!--<groupId>org.webjars</groupId>-->
-            <!--<artifactId>angular-ui-bootstrap</artifactId>-->
-            <!--<version>${angular.ui.bootstrap.version}</version>-->
+        <!--<groupId>org.webjars</groupId>-->
+        <!--<artifactId>angular-ui-bootstrap</artifactId>-->
+        <!--<version>${angular.ui.bootstrap.version}</version>-->
         <!--</dependency>-->
         <dependency>
             <groupId>org.webjars</groupId>
@@ -99,7 +102,6 @@
             <version>1.9.21</version><!--$NO-MVN-MAN-VER$-->
         </dependency>
 
-
     </dependencies>
 
     <build>
@@ -107,6 +109,13 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>repackage</goal>
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
         </plugins>
     </build>

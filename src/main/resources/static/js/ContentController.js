@@ -11,7 +11,8 @@ angular.module('taskManagerApp').controller('ContentController',
         // $scope.$watch('content.insertDate', function (val) {
         //     console.log(val)
         // });
-        // getAllContentTypes();
+        //loading types
+        getAllContentTypes();
 
         $scope.change = function (text) {
             getAllPosts()
@@ -43,7 +44,7 @@ angular.module('taskManagerApp').controller('ContentController',
             ContentService.loadContentTypes().then(
                 function (response) {
                     $scope.contentTypes = response.data._embedded.contentTypes;
-                    // console.log(JSON.stringify($scope.contentTypes) + '***************************');
+                    console.log(JSON.stringify($scope.contentTypes) + '***************************');
                 }, function (error) {
                     console.log(error + " error  during service call")
                     $scope.contentTypes = [];
